@@ -24,7 +24,7 @@ public class MoveLight_dy : MonoBehaviour
     void CallTargetPos()
     {
         mousePos = Input.mousePosition;
-        transPos = mainCamera.ScreenToWorldPoint(mousePos);
+        transPos = mainCamera.ScreenToWorldPoint(mousePos + new Vector3(0, 0, 0));
         targetPos = new Vector3(transPos.x, transPos.y, 0);
     }
     void MovetoTargetPos()
