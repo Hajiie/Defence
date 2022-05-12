@@ -260,11 +260,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103156323}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9e26820a31204640a427bc243297641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicImage: {fileID: 0}
   img:
   - {fileID: 21300000, guid: 4f3855d335417f34c87970b4d75883ac, type: 3}
   - {fileID: 21300000, guid: 532225437ff40aa4d8122f52e5bfd37d, type: 3}
@@ -626,6 +627,7 @@ GameObject:
   - component: {fileID: 2046809517}
   - component: {fileID: 2046809519}
   - component: {fileID: 2046809518}
+  - component: {fileID: 2046809520}
   m_Layer: 5
   m_Name: wood
   m_TagString: Untagged
@@ -689,3 +691,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046809516}
   m_CullTransparentMesh: 0
+--- !u!114 &2046809520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046809516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e26820a31204640a427bc243297641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicImage: {fileID: 2046809518}
+  img:
+  - {fileID: 21300000, guid: 4f3855d335417f34c87970b4d75883ac, type: 3}
+  - {fileID: 21300000, guid: 532225437ff40aa4d8122f52e5bfd37d, type: 3}
+  - {fileID: 21300000, guid: 592b68b98d95d5f458caa578b0322ac5, type: 3}

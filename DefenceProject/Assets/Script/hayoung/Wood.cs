@@ -11,15 +11,17 @@ public class Wood : MonoBehaviour
 
     private float time_current;
     private float time_max = 10f;
-    private int Img;
 
     GameObject wood;
+    public Image basicImage;
     public Sprite[] img;
     //public SpriteRenderer spriteRenderer;
 
     void Start()
     {
         //isEnded = true;
+        wood = FindObjectOfType<GameObject>();
+        basicImage = wood.GetComponent<Image>();
         reset_time();
         //spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -41,11 +43,13 @@ public class Wood : MonoBehaviour
 
         time_current = time_max;
       
-        Debug.Log(time_current);
+        //Debug.Log(time_current);
 
         if (time_current <= 8) // 90초 지났을 때
         {
-            wood.GetComponent<Image>().sprite = img[1];
+            Debug.Log(time_current);
+            basicImage.sprite = img[1];
+
         }
         else if (time_current <= 4)
         {
@@ -57,12 +61,7 @@ public class Wood : MonoBehaviour
             //게임오버
             return;
         }
-        */
-        else
-        {
-            wood.GetComponent<Image>().sprite = img[0];
-            return;
-        }      
+        */     
     }
 
     private void reset_time() //시간 초기화
