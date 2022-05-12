@@ -17,14 +17,16 @@ public class MoveLight_dy : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            CallTargetPos();
+            //CallTargetPos();
         }
-        MovetoTargetPos();
+        //MovetoTargetPos();
     }
     void CallTargetPos()
     {
         mousePos = Input.mousePosition;
         transPos = mainCamera.ScreenToWorldPoint(mousePos + new Vector3(0, 0, 0));
+        Debug.Log(mousePos);
+        Debug.Log(transPos);
         targetPos = new Vector3(transPos.x, transPos.y, 0);
     }
     void MovetoTargetPos()
