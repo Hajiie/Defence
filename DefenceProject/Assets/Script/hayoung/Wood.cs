@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Wood : MonoBehaviour
 {
+    // Gameobject --> Image로 변경하는 법 찾기
+
     // 시간 지남에 따라 나무 이미지 변화
     // 0초, 90초, 120초. max : 180초
     // 시간을 정수값으로 받고, 정수값
@@ -13,17 +15,15 @@ public class Wood : MonoBehaviour
     private float time_max = 10f;
 
     GameObject wood;
-    public Image basicImage;
     public Sprite[] img;
-    //public SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     void Start()
     {
         //isEnded = true;
         wood = FindObjectOfType<GameObject>();
-        basicImage = wood.GetComponent<Image>();
         reset_time();
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -42,26 +42,22 @@ public class Wood : MonoBehaviour
         // 처음 시작은 이미지1이어야함
 
         time_current = time_max;
-      
         //Debug.Log(time_current);
 
-        if (time_current <= 8) // 90초 지났을 때
+        if ((time_current <= 8)&&(time_current>4)) // 90초 지났을 때
         {
-            Debug.Log(time_current);
-            basicImage.sprite = img[1];
+            //Debug.Log(time_current);z
+            spriteRenderer.sprite = img[1];
 
         }
-        else if (time_current <= 4)
+        else if (time_current <= 4) // 50초 지났을 때
         {
-            wood.GetComponent<Image>().sprite = img[2];
+            spriteRenderer.sprite = img[2];
         }
-        /*else if (time_current == 0)
+        else
         {
-            //spriteRenderer.sprite = img[0];
-            //게임오버
-            return;
+            // 게임오버
         }
-        */     
     }
 
     private void reset_time() //시간 초기화
