@@ -12,18 +12,18 @@ public class Wood : MonoBehaviour
     // 시간을 정수값으로 받고, 정수값
 
     private float time_current;
-    private float time_max = 10f;
+    private float time_max = 10f; // 10초 테스트
 
     GameObject wood;
     public Sprite[] img;
-    public SpriteRenderer spriteRenderer;
+    public Image baseimage;
 
     void Start()
     {
-        //isEnded = true;
-        wood = FindObjectOfType<GameObject>();
+        //isEnded = true; 
+        wood = GameObject.FindGameObjectWithTag("wood");
         reset_time();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        baseimage = wood.GetComponent<Image>();
     }
 
     void Update()
@@ -46,13 +46,13 @@ public class Wood : MonoBehaviour
 
         if ((time_current <= 8)&&(time_current>4)) // 90초 지났을 때
         {
-            //Debug.Log(time_current);z
-            spriteRenderer.sprite = img[1];
+            //Debug.Log(time_current);
+            baseimage.sprite = img[1];
 
         }
         else if (time_current <= 4) // 50초 지났을 때
         {
-            spriteRenderer.sprite = img[2];
+            baseimage.sprite = img[2];
         }
         else
         {
