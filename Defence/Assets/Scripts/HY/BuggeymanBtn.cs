@@ -11,10 +11,11 @@ public class BuggeymanBtn : MonoBehaviour
     // 등장하고 확대되는 애니메이션
 
     public GameObject buggey;
+    public bool buggeyOn;
     
     void Start()
     {
-        buggey = GameObject.FindGameObjectWithTag("Buggey");// 부기맨 겜오브젝 갖고오기
+        //buggey = GameObject.FindGameObjectWithTag("Buggey");// 부기맨 겜오브젝 갖고오기
         //buggey.gameObject.SetActive(false);
         // 랜덤 생성 : 50퍼센트 확률로 나오게
     }
@@ -27,6 +28,19 @@ public class BuggeymanBtn : MonoBehaviour
     public void BuggeyAppear()
     {
         // 버튼 누르면 부기맨 켜기
-        buggey.gameObject.SetActive(true);
+        if (buggeyOn)  // 켜진 상태
+        {
+            Debug.Log("사라짐!");
+            buggeyOn = false;
+            buggey.gameObject.SetActive(false);
+        }
+
+        else if (!buggeyOn) //꺼진 상태
+        {
+            Debug.Log("등장!");
+            buggeyOn = true;
+            buggey.gameObject.SetActive(true);
+        }
+       
     }
 }
