@@ -5,6 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private int battery_num = 2;
+    private int Clip_num = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public int GetBatteryNum()//배터리 갯수 Get
+    public int GetBatteryNum()//배터리 갯수 return
     {
         return battery_num;
     }
@@ -31,5 +32,21 @@ public class Inventory : MonoBehaviour
     {
         battery_num -= 1;
         return battery_num;
+    }
+
+    public int GetClipNum()//클립의 갯수 return
+    {
+        return Clip_num;
+    }
+
+    public void GetClip()//클립을 얻었을 시 +1
+    {
+        Clip_num += 1;
+    }
+
+    public int UseClip()//클립 사용시 -1 & 리턴
+    {
+        Clip_num -= 1;
+        return Clip_num;
     }
 }

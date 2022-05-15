@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetItem : MonoBehaviour
 {
-    RaycastHit hit;
+    RaycastHit2D hit;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +22,9 @@ public class GetItem : MonoBehaviour
         if (Input.GetMouseButtonDown(0))//Push Mouse Left
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//카메라 기준 마우스 클릭 좌표
-            if (Physics.Raycast(ray, out hit))//선택한 오브젝트 = hit
+            if (hit = Physics2D.Raycast(ray.origin, ray.direction))//선택한 오브젝트 = hit
             {
-                //print(hit.transform.GetComponent<SelectItem>().item.itemName);
+                print(hit.point);
                 if (hit.transform.GetComponent<SelectItem>())//<SelectItem> 존재 유무
                 {
                     print(hit.transform.GetComponent<SelectItem>().item.itemType.ToString());
