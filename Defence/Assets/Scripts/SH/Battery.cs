@@ -36,7 +36,7 @@ public class Battery : MonoBehaviour
         IsBatteryGet();//배터리 얻었는지 체크
     }
 
-    void IsBatteryGet()//배터리 사용 시 꺼져있던 배터리 잔량 true, 배터리 갯수 초기화
+    void IsBatteryGet()
     {
         if (battery_num < Inven.GetBatteryNum())//현재 사용하고 있는 배터리와 비교 시 인벤토리의 배터리가 늘었을 시 
         {
