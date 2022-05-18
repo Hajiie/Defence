@@ -12,13 +12,13 @@ public class MoveToClick : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             CallTargetPos();
         }
@@ -27,18 +27,19 @@ public class MoveToClick : MonoBehaviour
     {
         mousePos = Input.mousePosition;
         transPos = Camera.main.ScreenToWorldPoint(mousePos + new Vector3(10, 10, 10));
-        //Debug.Log(transPos);
-        targetPos = new Vector3((transPos.x+0.001f), (transPos.y+0.001f), 0);
+        Debug.Log(transPos);
+        targetPos = new Vector3((transPos.x + 0.001f), (transPos.y + 0.001f), 0);
         transform.position = targetPos;
         //Debug.DrawRay(transform.position, new Vector3(0, 0, 10), Color.red, 1f);
         hit = Physics2D.Raycast(transform.position, raycastDir, 5f);
 
-        if(hit)
+        if (hit)
         {
             Debug.Log(hit.collider.tag);
             ShowBtn();
         }
-        else{
+        else
+        {
             Debug.Log("아무것도 눌러지지 않음");
             HideAllBtn();
         }
@@ -48,11 +49,11 @@ public class MoveToClick : MonoBehaviour
     {
         cabinetBtn.SetActive(false);
         closetBtn.SetActive(false);
-        if(hit.collider.tag == "Cabinet")
+        if (hit.collider.tag == "Cabinet")
         {
             cabinetBtn.SetActive(true);
         }
-        else if(hit.collider.tag == "Closet")
+        else if (hit.collider.tag == "Closet")
         {
             closetBtn.SetActive(true);
         }

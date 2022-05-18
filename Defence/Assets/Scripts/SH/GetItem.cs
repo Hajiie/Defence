@@ -21,27 +21,28 @@ public class GetItem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))//Push Mouse Left
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//카메라 기준 마우스 클릭 좌표
-            hit = Physics2D.Raycast(ray.origin, ray.direction);//선택한 오브젝트 = hit
             print(hit.point);
+            hit = this.GetComponent<RayCast>().getHit;
             if (hit)
             {
                 if (hit.transform.GetComponent<SelectItem>())//<SelectItem> 존재 유무
                 {
 
                     print(hit.transform.GetComponent<SelectItem>().item.itemType.ToString());
-                    if (hit.transform.GetComponent<SelectItem>().item.itemType == Item.ItemType.Battery)
+                    switch (hit.transform.GetComponent<SelectItem>().item.itemType)
                     {
-                        this.GetComponent<Inventory>().GetBattery();
-                    }
-                    if (hit.transform.GetComponent<SelectItem>().item.itemType == Item.ItemType.Clip)
-                    {
-                        this.GetComponent<Inventory>().GetClip();
-                        print(this.GetComponent<Inventory>().GetClipNum());
+                        case Item.ItemType.Battery:
+                            this.GetComponent<Inventory>().BatteryNum = 1;
+                            break;
+                        case Item.ItemType.Clip:
+                            this.GetComponent<Inventory>().ClipNum = 1;
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
-            Debug.DrawRay(ray.origin, ray.direction, Color.black, 5.0f, true);
+            //Debug.DrawRay(ray.origin, ray.direction, Color.black, 5.0f, true);
         }
         if (Input.GetMouseButtonUp(0))
         {
