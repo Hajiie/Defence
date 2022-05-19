@@ -20,7 +20,7 @@ public class DetectObject : MonoBehaviour
     void isObj()
     {
         hit = this.GetComponent<RayCast>().getHit;
-        if (hit)
+        if (hit && this.gameObject.GetComponent<ControlLight>().HandLight.activeSelf)
         {
             if (hit.transform.GetComponent<SelectObject>())
             {
