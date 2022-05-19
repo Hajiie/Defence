@@ -13,6 +13,7 @@ public class Battery : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         // Mng = GameObject.Find("ScriptMNG");
         Inven = this.GetComponent<Inventory>();//인벤토리 설정
         battery_num = Inven.BatteryNum;//인벤토리에서 가지고 있는 배터리 갯수 Get
