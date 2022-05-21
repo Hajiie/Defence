@@ -8,7 +8,7 @@ TagManager:
   - Buggey
   - Cabinet
   - Closet
-  - Arrow
+  - LeftRightArrow
   layers:
   - Default
   - TransparentFX

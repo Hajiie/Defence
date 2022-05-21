@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Arrow : MonoBehaviour
 {
+    public enum CameraLocation
+    {
+
+    }
     public Transform target; // 카메라 위치
     public Vector3 offset; // 이동할 위치
    
@@ -15,8 +19,7 @@ public class Arrow : MonoBehaviour
     float location_x;
     float location_y;
 
-    bool downArrow; // 켜짐 유무
-    bool leftrightArrow;
+    //bool downArrow; // 켜짐 유무
 
     void Update()
     {
@@ -24,30 +27,20 @@ public class Arrow : MonoBehaviour
         // 다시 침실로 돌아왔을 때는 꺼져야함
         location_x = target.position.x;
         location_y = target.position.y;
-        // 꺼진거면 켜지게 ! 해야겠다 <<<
         // 변수에 대입 해줘야함 - 아직 아무것도 안 넣어준 상태
 
-        if (location_x == -20 && location_y == 5) // 침실이면 아래 화살표만
+        if (location_x == -20 && location_y == 5) // 침실이면 양 옆 + 아래 화살표만
         {
             UpArrow.SetActive(false); // 위 화살표는 기본적으로 꺼주기
             DownArrow.SetActive(true);
-            leftrightArrow = true; 
-
-            if (!leftrightArrow)// 아래 + 양 옆 꺼져있으면 켜주기
-            { 
-                //DownArrow.SetActive(true);
-                ArrowAppear(true);
-            }  
+            ArrowAppear(true);
         }
 
         else if(location_x == -20 && location_y == 20) // 침대 아래면 위 화살표만
         {
             UpArrow.SetActive(true); // 기본적으로 켜주기
             DownArrow.SetActive(false);
-            if (leftrightArrow) // 양 옆 + 아래 화살표 둘 중 하나라도 켜져있으면
-            {
-                ArrowAppear(false);
-            }
+            ArrowAppear(false);
         }
         else
         {
@@ -66,7 +59,6 @@ public class Arrow : MonoBehaviour
         //location_y = target.position.y;
 
         Vector3 BG_Lock = new Vector3(0, location_y, -10);
-
 
         if (location_x <= 0 && location_x > -60)
            // 근데 이거 왜 이상이하 아님?ㅜ
@@ -96,7 +88,6 @@ public class Arrow : MonoBehaviour
             target.transform.position = offset;
         }
         else if (location_x == 0)
-
         {
             target.transform.position = BG_Door;
         }
@@ -114,12 +105,10 @@ public class Arrow : MonoBehaviour
         target.transform.position = offset;
     }
 
-    public void ArrowAppear(bool leftrightArrow) // true면 켜짐
-    { 
-    
-        //Debug.Log(a);
-        LeftRightArrow = GameObject.FindWithTag("Arrow");
-        LeftRightArrow.SetActive(leftrightArrow);
-        //null이 왜 뜰 까요,, ㅜㅜ
+    public void ArrowAppear(bool isLeftRightArrowActive) // true면 켜짐
+    {
+        //FindWithTag는 오브젝트 하나만 받음
+        // 오브젝트 못찾았음
+        LeftRightArrow.SetActive(isLeftRightArrowActive);
     }
 }
