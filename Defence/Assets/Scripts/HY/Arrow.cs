@@ -15,30 +15,45 @@ public class Arrow : MonoBehaviour
     float location_x;
     float location_y;
 
+    bool downArrow; // 켜짐 유무
+    bool leftrightArrow;
+
     void Update()
     {
         // 태그 넣어서 .... ..
         // 다시 침실로 돌아왔을 때는 꺼져야함
         location_x = target.position.x;
         location_y = target.position.y;
-
         // 꺼진거면 켜지게 ! 해야겠다 <<<
+        // 변수에 대입 해줘야함 - 아직 아무것도 안 넣어준 상태
 
         if (location_x == -20 && location_y == 5) // 침실이면 아래 화살표만
         {
-            ArrowDisappear(true);
-            UpArrow.SetActive(false);
-            DownArrow.SetActive(true);          
+            UpArrow.SetActive(false); // 위 화살표는 기본적으로 꺼주기
+            DownArrow.SetActive(true);
+            leftrightArrow = true; 
+
+            if (!leftrightArrow)// 아래 + 양 옆 꺼져있으면 켜주기
+            { 
+                //DownArrow.SetActive(true);
+                ArrowAppear(true);
+            }  
         }
+
         else if(location_x == -20 && location_y == 20) // 침대 아래면 위 화살표만
         {
-            ArrowDisappear(false);
-            UpArrow.SetActive(true);
+            UpArrow.SetActive(true); // 기본적으로 켜주기
+            DownArrow.SetActive(false);
+            if (leftrightArrow) // 양 옆 + 아래 화살표 둘 중 하나라도 켜져있으면
+            {
+                ArrowAppear(false);
+            }
         }
         else
         {
-            DownArrow.SetActive(false);
             UpArrow.SetActive(false);
+            DownArrow.SetActive(false);
+            ArrowAppear(true);
         }
     }
 
@@ -99,10 +114,12 @@ public class Arrow : MonoBehaviour
         target.transform.position = offset;
     }
 
-    public void ArrowDisappear(bool a) // true면 켜짐
-    {
-        Debug.Log(a);
+    public void ArrowAppear(bool leftrightArrow) // true면 켜짐
+    { 
+    
+        //Debug.Log(a);
         LeftRightArrow = GameObject.FindWithTag("Arrow");
-        LeftRightArrow.SetActive(a);
+        LeftRightArrow.SetActive(leftrightArrow);
+        //null이 왜 뜰 까요,, ㅜㅜ
     }
 }
