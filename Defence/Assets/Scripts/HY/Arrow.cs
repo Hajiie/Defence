@@ -7,13 +7,39 @@ public class Arrow : MonoBehaviour
 {
     public Transform target; // 카메라 위치
     public Vector3 offset; // 이동할 위치
+   
+    public GameObject DownArrow;
+    public GameObject UpArrow;
+    public GameObject LeftRightArrow;
 
     float location_x;
     float location_y;
 
     void Update()
     {
+        // 태그 넣어서 .... ..
+        // 다시 침실로 돌아왔을 때는 꺼져야함
+        location_x = target.position.x;
+        location_y = target.position.y;
 
+        // 꺼진거면 켜지게 ! 해야겠다 <<<
+
+        if (location_x == -20 && location_y == 5) // 침실이면 아래 화살표만
+        {
+            ArrowDisappear(true);
+            UpArrow.SetActive(false);
+            DownArrow.SetActive(true);          
+        }
+        else if(location_x == -20 && location_y == 20) // 침대 아래면 위 화살표만
+        {
+            ArrowDisappear(false);
+            UpArrow.SetActive(true);
+        }
+        else
+        {
+            DownArrow.SetActive(false);
+            UpArrow.SetActive(false);
+        }
     }
 
     public void cameraMoveLeft() // 카메라 위치를 '정해진 위치'로 바꿔주어야함
@@ -21,8 +47,8 @@ public class Arrow : MonoBehaviour
         // 왼쪽 버튼 누를 때마다 x축 좌표 -20씩
         // -60이면 0으로 이동
 
-        location_x = target.position.x;
-        location_y = target.position.y;
+        //location_x = target.position.x;
+        //location_y = target.position.y;
 
         Vector3 BG_Lock = new Vector3(0, location_y, -10);
 
@@ -32,49 +58,51 @@ public class Arrow : MonoBehaviour
         {
            Vector3 offset = new Vector3(location_x - 20, location_y, -10);
            // 왼쪽 이동
-           target.transform.position = offset;
-           //Debug.Log(offset);       
+           target.transform.position = offset;      
         }
         else if (location_x == -60.0)
-
         {
            //Debug.Log(location_x);
            target.transform.position = BG_Lock;
         }
-
     }
 
     public void cameraMoveRight() // 카메라 위치를 '정해진 위치'로 바꿔주어야함
     {
-        location_x = target.position.x;
-        location_y = target.position.y;
+        //location_x = target.position.x;
+        //location_y = target.position.y;
 
         Vector3 BG_Door = new Vector3(-60, location_y, -10);
 
-
         if (location_x < 0 && location_x >= -60)
         {
-           Vector3 offset = new Vector3(location_x + 20, location_y, -10);
+            Vector3 offset = new Vector3(location_x + 20, location_y, -10);
             // 오른쪽 이동
-           target.transform.position = offset;
-              
+            target.transform.position = offset;
         }
         else if (location_x == 0)
 
         {
-          
-           target.transform.position = BG_Door;
+            target.transform.position = BG_Door;
         }
-
     }
 
     public void cameraMoveUp()
     {
-        // 침대 아래 장면에서만 뜸
+        Vector3 offset = new Vector3(location_x, location_y - 15, -10);
+        target.transform.position = offset;
     }
 
     public void cameraMoveDown()
     {
-        // 침대 씬에서 + 침대 아래 장면에서 뜸
+        Vector3 offset = new Vector3(location_x, location_y + 15, -10);
+        target.transform.position = offset;
+    }
+
+    public void ArrowDisappear(bool a) // true면 켜짐
+    {
+        Debug.Log(a);
+        LeftRightArrow = GameObject.FindWithTag("Arrow");
+        LeftRightArrow.SetActive(a);
     }
 }
