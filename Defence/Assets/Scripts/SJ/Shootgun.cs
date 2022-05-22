@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Shootgun : MonoBehaviour
 {
     private Vector3 ScreenCenter;
@@ -13,18 +13,19 @@ public class Shootgun : MonoBehaviour
 
     bool gameOver = false;
 
+    public Text ScriptTxt;
+
     GameObject shootButton;
     // Start is called before the first frame update
     void Start()
     {
-        ScreenCenter = new Vector3(Camera.main.pixelHeight / 2, Camera.main.pixelWidth / 2);
+        ScreenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
+        ScriptTxt.text ="x" + bulletCnt.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(ScreenCenter);
-
         if (bulletCnt == 0 && hitCnt == 2) { } // hit all bullets then to next stage
 
         if (miss >= 2)
@@ -36,20 +37,23 @@ public class Shootgun : MonoBehaviour
             return; // back to prev stage
         }
     }
-    void FireGun()
+    public void OnclickFireGun()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(ScreenCenter); // cross-hair is Screencenter
-        Physics.Raycast(ray, out hit, Mathf.Infinity);
+        ScreenCenter = Camera.main.ScreenToWorldPoint(ScreenCenter); 
+        RaycastHit2D hit = Physics2D.Raycast(ScreenCenter,transform.forward, 15f); // cross-hair is Screencenter
 
-        CheckTarget(hit); 
-
-        bulletCnt--;
-
+        CheckTarget(hit);
+        ShowbulletCnt();
+        
     }
-    void CheckTarget(RaycastHit hit)
+    void ShowbulletCnt()
     {
-        if (hit.transform.tag == "Monster") // need to fix tag of monster
+        bulletCnt--;
+        ScriptTxt.text = "x" + bulletCnt.ToString(); // show the num of bullets
+    }
+    void CheckTarget(RaycastHit2D hit)
+    {
+        if (hit.transform.tag == "Buggey") // if hits buggey
         {
             this.hitCnt++;
         }
