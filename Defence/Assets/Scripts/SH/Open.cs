@@ -6,21 +6,32 @@ using UnityEngine.UI;
 public class Open : MonoBehaviour
 {
     public Sprite img;
-    GameObject btn;
+    public GameObject btn;
     // Start is called before the first frame update
     void Start()
     {
-        btn = GameObject.Find("LockOpen");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Camera.main.transform.position == new Vector3(-60, 5, -10) && this.GetComponent<RayCast>().getHit && this.GetComponent<ControlLight>().HandLight.activeSelf)
+        {
+            btn.SetActive(true);
+        }
+        else
+        {
+            btn.SetActive(false);
+        }
     }
 
     public void OpenDoor()
     {
-        btn.GetComponent<Image>().sprite = img;
+        if (this.GetComponent<Inventory>().ClipNum > 0)
+        {
+            btn.GetComponent<Image>().sprite = img;
+            this.GetComponent<Inventory>().ClipNum = -1;
+        }
     }
 }

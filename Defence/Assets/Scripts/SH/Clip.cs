@@ -24,7 +24,7 @@ public class Clip : MonoBehaviour
 
     void IsClipGet()
     {
-        if (clip_num < Inven.ClipNum)//현재 가지고 있는 클립과 비교 시 인벤토리에 클립이 늘었을 시
+        if (clip_num != Inven.ClipNum)//현재 가지고 있는 클립과 비교 시 인벤토리에 클립이 늘었을 시
         {
             clip_num = Inven.ClipNum;//새롭게 초기화
             print(clip_num);

@@ -9,11 +9,11 @@ public class Battery : MonoBehaviour
     Inventory Inven;
     public GameObject battery;
 
-    bool IsLightOn = false;
+    bool isLightOn = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+
         // Mng = GameObject.Find("ScriptMNG");
         Inven = this.GetComponent<Inventory>();//인벤토리 설정
         battery_num = Inven.BatteryNum;//인벤토리에서 가지고 있는 배터리 갯수 Get
@@ -28,12 +28,15 @@ public class Battery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsLightOn)
+        if (isLightOn)//손전등이 켜져있는지 체크
         {
+
             if (time.IsDone)//시간이 지남에 따라
             {//배터리 잔량 감소
+
                 if (battery_num > 0)//OutofBound
                 {
+
                     Inven.BatteryNum = -1;//배터리 사용 감소 초기화
                     battery_num = Inven.BatteryNum;
                     battery.transform.GetChild(battery_num).gameObject.SetActive(false);
@@ -42,6 +45,7 @@ public class Battery : MonoBehaviour
             }
         }
         IsBatteryGet();//배터리 얻었는지 체크
+        UseUpBattery();//배터리를 전부 사용 시
     }
 
     void IsBatteryGet()
@@ -56,16 +60,25 @@ public class Battery : MonoBehaviour
 
     public void LightON()
     {
-        if (IsLightOn)
+        if (!isLightOn)
         {
-            IsLightOn = false;
-            time.IsEnable = false;
+            time.IsEnable = true;
+            isLightOn = true;
         }
         else
         {
-            IsLightOn = true;
-            time.IsEnable = true;
+            time.IsEnable = false;
+            isLightOn = false;
         }
     }
 
+    void UseUpBattery()
+    {
+        if (battery_num == 0 && isLightOn)
+        {
+            this.GetComponent<ControlLight>().LightOff();
+            isLightOn = false;
+            time.IsEnable = false;
+        }
+    }
 }

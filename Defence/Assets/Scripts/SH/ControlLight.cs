@@ -25,16 +25,22 @@ public class ControlLight : MonoBehaviour
         HandLight.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         HandLight.transform.position = new Vector3(HandLight.transform.position.x, HandLight.transform.position.y, 0);
     }
-
     public void SetLight()
     {
-        if (HandLight.activeSelf)
+        if (HandLight.activeSelf == true && this.GetComponent<Inventory>().BatteryNum <= 0)
         {
             HandLight.SetActive(false);
+            this.GetComponent<Battery>().LightON();
         }
-        else
+        else if (HandLight.activeSelf == false)
         {
             HandLight.SetActive(true);
+            this.GetComponent<Battery>().LightON();
         }
+    }
+
+    public void LightOff()
+    {
+        HandLight.SetActive(false);
     }
 }

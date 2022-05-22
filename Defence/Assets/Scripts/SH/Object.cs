@@ -10,7 +10,8 @@ public class Object : ScriptableObject
         Closet,
         Drawer,
         DeskDrawer,
-        Bed
+        Bed,
+        Door
     }
     public string objectName;
     public ObjectType objectType;

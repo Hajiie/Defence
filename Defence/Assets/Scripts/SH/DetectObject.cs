@@ -14,14 +14,14 @@ public class DetectObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isObj();
+        isObj();//오브젝트 인지 체크
     }
 
     void isObj()
     {
         hit = this.GetComponent<RayCast>().getHit;
         if (hit && this.gameObject.GetComponent<ControlLight>().HandLight.activeSelf)
-        {
+        {//손전등이 켜져있을 때
             if (hit.transform.GetComponent<SelectObject>())
             {
                 Debug.Log(hit.transform.GetComponent<SelectObject>().obj.objectType);

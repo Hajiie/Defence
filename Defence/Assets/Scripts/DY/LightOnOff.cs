@@ -9,12 +9,13 @@ public class LightOnOff : MonoBehaviour
 
     public void SetLight()
     {
-        if(lightOn)
+        if (lightOn)
         {
             pointLight.SetActive(false);
             lightOn = false;
         }
-        else{
+        else
+        {
             pointLight.SetActive(true);
             lightOn = true;
         }

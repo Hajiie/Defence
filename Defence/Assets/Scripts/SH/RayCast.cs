@@ -20,7 +20,6 @@ public class RayCast : MonoBehaviour
 
     public RaycastHit2D getHit
     {
-        get { return hit; }
-        set { hit = value; }
+        get { return hit; }//맞은 물체 반환.
     }
 }
