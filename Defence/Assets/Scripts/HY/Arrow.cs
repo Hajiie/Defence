@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class Arrow : MonoBehaviour
 {
-    public enum CameraLocation
-    {
 
-    }
     public Transform target; // 카메라 위치
     public Vector3 offset; // 이동할 위치
    
@@ -27,7 +24,6 @@ public class Arrow : MonoBehaviour
         // 다시 침실로 돌아왔을 때는 꺼져야함
         location_x = target.position.x;
         location_y = target.position.y;
-        // 변수에 대입 해줘야함 - 아직 아무것도 안 넣어준 상태
 
         if (location_x == -20 && location_y == 5) // 침실이면 양 옆 + 아래 화살표만
         {
