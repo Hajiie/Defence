@@ -17,7 +17,7 @@ public class ControlLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             IsDrag();
         }
@@ -33,7 +33,7 @@ public class ControlLight : MonoBehaviour
     }
     public void SetLight()
     {
-        if (HandLight.activeSelf == true && this.GetComponent<Inventory>().BatteryNum <= 0)
+        if (HandLight.activeSelf == true)
         {
             HandLight.SetActive(false);
             this.GetComponent<Battery>().LightON();
