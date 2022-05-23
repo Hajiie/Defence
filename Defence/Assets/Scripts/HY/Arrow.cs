@@ -75,11 +75,11 @@ public class Arrow : MonoBehaviour
         //location_x = target.position.x;
         //location_y = target.position.y;
 
-        Vector3 BG_Door = new Vector3(-120, location_y, -10);
+        Vector3 BG_Door = new Vector3(-120, 0, -10);
 
         if (location_x < 0 && location_x >= -120)
         {
-            Vector3 offset = new Vector3(location_x + 20, location_y, -10);
+            Vector3 offset = new Vector3(location_x + 40, location_y, -10);
             // 오른쪽 이동
             target.transform.position = offset;
         }
