@@ -25,14 +25,14 @@ public class Arrow : MonoBehaviour
         location_x = target.position.x;
         location_y = target.position.y;
 
-        if (location_x == -20 && location_y == 5) // 침실이면 양 옆 + 아래 화살표만
+        if (location_x == -40 && location_y == 0) // 침실이면 양 옆 + 아래 화살표만
         {
             UpArrow.SetActive(false); // 위 화살표는 기본적으로 꺼주기
             DownArrow.SetActive(true);
             ArrowAppear(true);
         }
 
-        else if(location_x == -20 && location_y == 20) // 침대 아래면 위 화살표만
+        else if(location_x == -40 && location_y == 20) // 침대 아래면 위 화살표만
         {
             UpArrow.SetActive(true); // 기본적으로 켜주기
             DownArrow.SetActive(false);
@@ -56,14 +56,14 @@ public class Arrow : MonoBehaviour
 
         Vector3 BG_Lock = new Vector3(0, location_y, -10);
 
-        if (location_x <= 0 && location_x > -60)
+        if (location_x <= 0 && location_x > -120)
            // 근데 이거 왜 이상이하 아님?ㅜ
         {
-           Vector3 offset = new Vector3(location_x - 20, location_y, -10);
+           Vector3 offset = new Vector3(location_x - 40, location_y, -10);
            // 왼쪽 이동
            target.transform.position = offset;      
         }
-        else if (location_x == -60.0)
+        else if (location_x == -120)
         {
            //Debug.Log(location_x);
            target.transform.position = BG_Lock;
@@ -75,9 +75,9 @@ public class Arrow : MonoBehaviour
         //location_x = target.position.x;
         //location_y = target.position.y;
 
-        Vector3 BG_Door = new Vector3(-60, location_y, -10);
+        Vector3 BG_Door = new Vector3(-120, location_y, -10);
 
-        if (location_x < 0 && location_x >= -60)
+        if (location_x < 0 && location_x >= -120)
         {
             Vector3 offset = new Vector3(location_x + 20, location_y, -10);
             // 오른쪽 이동
@@ -91,13 +91,13 @@ public class Arrow : MonoBehaviour
 
     public void cameraMoveUp()
     {
-        Vector3 offset = new Vector3(location_x, location_y - 15, -10);
+        Vector3 offset = new Vector3(location_x, location_y - 20, -10);
         target.transform.position = offset;
     }
 
     public void cameraMoveDown()
     {
-        Vector3 offset = new Vector3(location_x, location_y + 15, -10);
+        Vector3 offset = new Vector3(location_x, location_y + 20, -10);
         target.transform.position = offset;
     }
 
