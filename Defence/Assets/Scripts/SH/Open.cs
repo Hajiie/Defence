@@ -7,6 +7,7 @@ public class Open : MonoBehaviour
 {
     public Sprite img;
     public GameObject btn;
+    public Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class Open : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Camera.main.transform.position == new Vector3(-60, 5, -10) && this.GetComponent<RayCast>().getHit && this.GetComponent<ControlLight>().HandLight.activeSelf)
+        if (mainCamera.transform.position == new Vector3(-60, 5, -10) && this.GetComponent<RayCast>().getHit && this.GetComponent<ControlLight>().HandLight.activeSelf)
         {
             btn.SetActive(true);
         }

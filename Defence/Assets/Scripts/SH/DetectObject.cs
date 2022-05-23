@@ -14,7 +14,10 @@ public class DetectObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isObj();//오브젝트 인지 체크
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            isObj();//오브젝트 인지 체크
+        }
     }
 
     void isObj()

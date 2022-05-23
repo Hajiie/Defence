@@ -21,7 +21,7 @@ public class GetItem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))//Push Mouse Left
         {
-            print(hit.point);
+            //print(hit.point);
             hit = this.GetComponent<RayCast>().getHit;
             if (hit)
             {

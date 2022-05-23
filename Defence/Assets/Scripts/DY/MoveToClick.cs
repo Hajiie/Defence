@@ -27,7 +27,7 @@ public class MoveToClick : MonoBehaviour
     {
         mousePos = Input.mousePosition;
         transPos = Camera.main.ScreenToWorldPoint(mousePos + new Vector3(10, 10, 10));
-        Debug.Log(transPos);
+        //Debug.Log(transPos);
         targetPos = new Vector3((transPos.x + 0.001f), (transPos.y + 0.001f), 0);
         transform.position = targetPos;
         //Debug.DrawRay(transform.position, new Vector3(0, 0, 10), Color.red, 1f);

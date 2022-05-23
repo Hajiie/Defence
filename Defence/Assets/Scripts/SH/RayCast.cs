@@ -5,6 +5,7 @@ using UnityEngine;
 public class RayCast : MonoBehaviour
 {
     RaycastHit2D hit;
+    public Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,7 @@ public class RayCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         hit = Physics2D.Raycast(ray.origin, ray.direction);
     }
 
