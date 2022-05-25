@@ -8,6 +8,12 @@ public class CameraView : MonoBehaviour
     [SerializeField] List<Camera> Cameras = new List<Camera>();
     [SerializeField] List<GameObject> Backgrounds = new List<GameObject>();
 
+    Camera NowCamera;
+    public Camera getCamera
+    {
+        get { return NowCamera; }
+    }
+
     public int currentImgLocation;
     public GameObject downArrow;
     public GameObject upArrow;
@@ -33,6 +39,7 @@ public class CameraView : MonoBehaviour
     void Start()
     {
         currentLocation = CameraLocation.BG_Lock;
+        NowCamera = Cameras[(int)CameraLocation.BG_Lock];
         for (int i = 0; i < Cameras.Count; i++)
         {
             if (i != (int)currentLocation) // 처음화면 제외하고 off
@@ -67,15 +74,15 @@ public class CameraView : MonoBehaviour
         }
         else if (currentImgLocation == ((int)CameraLocation.BG_Bed))
         {
-            NextCameraOn((int)CameraLocation.BG_Lamp); 
+            NextCameraOn((int)CameraLocation.BG_Lamp);
         }
-        else if (currentImgLocation == ((int)CameraLocation.BG_Lamp))  
+        else if (currentImgLocation == ((int)CameraLocation.BG_Lamp))
         {
-            NextCameraOn((int)CameraLocation.BG_Door); 
-        }  
-        else if (currentImgLocation == ((int)CameraLocation.BG_Door))  
+            NextCameraOn((int)CameraLocation.BG_Door);
+        }
+        else if (currentImgLocation == ((int)CameraLocation.BG_Door))
         {
-            NextCameraOn((int)CameraLocation.BG_Lock); 
+            NextCameraOn((int)CameraLocation.BG_Lock);
         }
         else
         {
@@ -103,7 +110,7 @@ public class CameraView : MonoBehaviour
         {
             NextCameraOn((int)CameraLocation.BG_Lock);
         }
-       
+
         // 나머지 화면인 경우 Setactive(false)
     }
 
@@ -145,7 +152,7 @@ public class CameraView : MonoBehaviour
         for (int i = 0; i < Cameras.Count; i++) // 받아서 돌리는데, 받은 번호가 나오면 그 번호 화면만 카메라 켜기
         {
             Cameras[nextcamera].gameObject.SetActive(true);
-
+            NowCamera = Cameras[nextcamera];
             if (i != nextcamera)
             {
                 Cameras[i].gameObject.SetActive(false);

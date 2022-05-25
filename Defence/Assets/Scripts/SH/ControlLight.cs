@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControlLight : MonoBehaviour
 {
     RaycastHit2D hit;
-    public Camera mainCamera;
+    Camera mainCamera;
     public GameObject HandLight;
     Vector3 transPos, targetPos;
     // Start is called before the first frame update
@@ -17,6 +17,7 @@ public class ControlLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mainCamera = this.GetComponent<CameraView>().getCamera;
         if (Input.GetMouseButton(0))
         {
             IsDrag();
