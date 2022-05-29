@@ -12,32 +12,26 @@ public class BuggeymanBtn : MonoBehaviour
 
     public GameObject buggey;
     public bool buggeyOn;
-    
-    void Start()
-    {
-        //buggey = GameObject.FindGameObjectWithTag("Buggey");// 부기맨 겜오브젝 갖고오기
-        //buggey.gameObject.SetActive(false);
-        // 랜덤 생성 : 50퍼센트 확률로 나오게
-    }
 
     void Update()
     {
 
     }
 
+    // Door_Door : 10초 이내 - 6초에 50% 10초에 100% 등장
+
+
     public void BuggeyAppear()
     {
-        // 버튼 누르면 부기맨 켜기
+        // 그냥 bool 만들어서 껐다 켜는 거 해준 거
         if (buggeyOn)  // 켜진 상태
         {
-            Debug.Log("사라짐!");
             buggeyOn = false;
             buggey.gameObject.SetActive(false);
         }
 
         else if (!buggeyOn) //꺼진 상태
         {
-            Debug.Log("등장!");
             buggeyOn = true;
             buggey.gameObject.SetActive(true);
         }
