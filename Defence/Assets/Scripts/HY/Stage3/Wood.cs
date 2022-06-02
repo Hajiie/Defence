@@ -20,7 +20,6 @@ public class Wood : MonoBehaviour
 
     void Start()
     {
-        //isEnded = true; 
         wood = GameObject.FindGameObjectWithTag("wood");
         reset_time();
         baseimage = wood.GetComponent<Image>();

@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExpansionBtn: MonoBehaviour
 {
     [SerializeField] List<GameObject> btns = new List<GameObject>(); // 확대 버튼들
+    [SerializeField] List<int> hp = new List<int>();
+    [SerializeField] List<Image> bars = new List<Image>();
 
     public CameraView cameraview;
     public GameObject OpenGauge;
@@ -58,19 +61,31 @@ public class ExpansionBtn: MonoBehaviour
     {
         cameraview.KeyBtn.SetActive(false); // Key버튼 끄기
         OpenGauge.SetActive(true); // 게이지 이미지 켜주기
-        // 3줄의 게이지는 자동적으로 다음 줄로 넘어감
-        // 
     }
 
-    public void KeyIconOnClick() // KeyBtn 누르면 나오는 KeyIcon
+    public void KeyIconOnClick() // KeyBtn 누르면 나오는 KeyIconBtn
     {
-        // 열쇠 아이콘 50번 터치해야 게이지 하나 채움
+        if (hp[0] == 0 && !(hp[1] == 0))
+            GaugebarDown(1); // 두번째 바
 
+        else if(hp[0] == 0 && hp[1] == 0)
+            GaugebarDown(2); // 세번째 바
+            // Stage 3으로 넘어가기 
+
+        else
+            GaugebarDown(0);
+        // 열쇠 아이콘 50번 터치해야 게이지 하나 채움
+        // 3줄의 게이지는 자동적으로 다음 줄로 넘어감
     }
 
     public void HideOnClick()
     {
         // 부기맨 등장 효과음 줄어들게
     }
-    
+
+    public void GaugebarDown(int i) // bar[i]의 바 감소
+    {
+        hp[i] -= 1;
+        bars[i].fillAmount = hp[i] * 0.02f;
+    }
 }
