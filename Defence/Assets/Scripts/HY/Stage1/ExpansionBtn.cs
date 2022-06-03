@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ExpansionBtn: MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ExpansionBtn: MonoBehaviour
 
     public CameraView cameraview;
     public GameObject OpenGauge;
+    public string sceneName;
+
 
     public void Expand() // 가구 버튼 누르면 클로징 씬으로 이동 - 해당 버튼이 SetActive(true)인가?
 
@@ -69,8 +72,12 @@ public class ExpansionBtn: MonoBehaviour
             GaugebarDown(1); // 두번째 바
 
         else if(hp[0] == 0 && hp[1] == 0)
+        {
             GaugebarDown(2); // 세번째 바
+            //SceneManager.LoadScene(sceneName);
             // Stage 3으로 넘어가기 
+
+        }
 
         else
             GaugebarDown(0);

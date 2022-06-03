@@ -55,7 +55,7 @@ public class Wood : MonoBehaviour
         }
         else
         {
-            // 게임오버
+            // 게임오버..하면 어떻게되쥬.,..
         }
     }
 

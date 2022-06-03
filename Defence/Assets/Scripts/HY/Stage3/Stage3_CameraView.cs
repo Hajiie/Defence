@@ -73,4 +73,8 @@ public class Stage3_CameraView : MonoBehaviour
     {
         NextCameraOn((int)CameraLocation.BG_Start); // 카메라 함수 들고와서?! 그런가.. 아ㅏㅏ 함수 걍 
     }
+
+    // BG_Closet 에서 '스프라이트 바꿔지면 or 스프라이트 켜지면'이라는 조건 필요
+    // 옷장 열리면 부기맨 등장
+    // 10초 지나면 부기맨 등장
 }

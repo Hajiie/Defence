@@ -8,15 +8,13 @@ public class BuggeymanBtn : MonoBehaviour
     public GameObject buggey;
     public CameraView cameraview;
 
-     // 10초 테스트
+    // 10초 테스트
 
-   void Update()
-        // 화면 전환됐을 때, 어떤 확률로 등장하는 지만 구현되어 있음
-        // Door_Door 10초 이내 구현 필요
+    // 화면 전환됐을 때, 어떤 확률로 등장하는 지만 구현되어 있음
+    // Door_Door 10초 이내 구현 필요
+    //시간초 필요할 때만 돌려 / 옷장, 책상, 침대 밑, 문
+    // 0되면 멈춤
 
-    { //시간초 필요할 때만 돌려 / 옷장, 책상, 침대 밑, 문
-        // 0되면 멈춤
-    }
 
 
     public void BuggeyAppearCloset() // 옷장 클로징 + 오픈 후
@@ -62,6 +60,7 @@ public class BuggeymanBtn : MonoBehaviour
             if (xcount >= 0 && xcount < num)
             {
                 buggey.SetActive(true);
+                // 게임오버
                 //Debug.Log(xcount);
             }
             // xcount 값이 해당 범위 안에 있으면

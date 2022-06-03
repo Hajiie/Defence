@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7161041848ebfa34d8171cc40da5e7b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: ItemLight
+  SceneName: Stage1
 --- !u!4 &1637565175
 Transform:
   m_ObjectHideFlags: 0
