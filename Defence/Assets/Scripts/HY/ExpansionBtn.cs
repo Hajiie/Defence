@@ -74,6 +74,7 @@ public class ExpansionBtn: MonoBehaviour
 
         else
             GaugebarDown(0);
+
         // 열쇠 아이콘 50번 터치해야 게이지 하나 채움
         // 3줄의 게이지는 자동적으로 다음 줄로 넘어감
     }
@@ -83,7 +84,7 @@ public class ExpansionBtn: MonoBehaviour
         // 부기맨 등장 효과음 줄어들게
     }
 
-    public void GaugebarDown(int i) // bar[i]의 바 감소
+    void GaugebarDown(int i) // bar[i]의 fillAmount 감소
     {
         hp[i] -= 1;
         bars[i].fillAmount = hp[i] * 0.02f;

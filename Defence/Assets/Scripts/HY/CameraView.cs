@@ -17,6 +17,7 @@ public class CameraView : MonoBehaviour
         get { return NowCamera; }
     }
 
+    public float time_max = 10f; // 부기맨 등장 10초 - 지역변수 못 갖고와서 여따 넣음
     int currentImgLocation;
     public GameObject upArrow;
     public GameObject downArrow;
@@ -70,7 +71,17 @@ public class CameraView : MonoBehaviour
             {
                 currentImgLocation = i; // 해당 카메라 위치 = 현재 위치  
                 ArrowOnOff(); // 이동 버튼
-                //BuggeyOnOff(i); // 부기 등장 함수
+            }
+
+            if (currentImgLocation == (int)CameraView.CameraLocation.BG_Door_Door) // BG_Door_Door이면
+            {
+                if (time_max > 0)
+                {
+                    time_max -= Time.deltaTime;
+                    //Debug.Log((int)time_max);
+                }   
+                else
+                    return;
             }
         }
     }
@@ -167,9 +178,11 @@ public class CameraView : MonoBehaviour
                 Cameras[i].gameObject.SetActive(false);
             }
         }
+
+        BuggeyOnOff(nextcamera); // 부기 등장 확률 함수 / 카메라 이동할 때마다 실행
     }  
 
-    public void ArrowOnOff() // 화살표 버튼
+    public void ArrowOnOff() // 화살표
     {
         if (currentImgLocation == (int)CameraLocation.BG_Lock || currentImgLocation == (int)CameraLocation.BG_Bed || currentImgLocation == (int)CameraLocation.BG_Lamp || currentImgLocation == (int)CameraLocation.BG_Door)
             // Lock,Lamp,Bed,Door에서 왼쪽오른쪽 버튼 켜주기
@@ -198,21 +211,6 @@ public class CameraView : MonoBehaviour
             else
             {
                 upArrow.SetActive(false);
-
-                /*if (currentImgLocation == (int)CameraLocation.BG_Door_Door) // Door_Door이면
-                { 
-                    if (expansionbtn.OpenGauge.activeSelf) // 게이지 창이 뜬 상태일 경우
-                        KeyBtn.SetActive(false);
-                    else
-                    {
-                        KeyBtn.SetActive(true);
-                    }
-                    // 얘 밖으로 빼기 - 뒤로 가기 했을 때 안 사라짐
-                }
-                // 클립 한 개 이상 모았을 때 등장
-
-                else if (currentImgLocation == (int)CameraLocation.BG_Bed_Bed) // Bed_Bed에서 Hide 버튼 켜주기
-                    HideBtn.SetActive(true);*/
             }
 
         }
@@ -222,7 +220,6 @@ public class CameraView : MonoBehaviour
     {
         // 위치만 그때그때 받고,
         // 이동할 때만 함수 실행 시켜야함
-
         switch(x)
         {
             case (int)CameraLocation.BG_Lock_Closet: // 옷장
@@ -231,6 +228,7 @@ public class CameraView : MonoBehaviour
 
             case (int)CameraLocation.BG_UndertheBed: // 침대 밑
                 buggeymanbtn.BuggeyAppearUndertheBed();
+                HideBtn.SetActive(true);
                 break;
             
             case (int)CameraLocation.BG_Bed_Bed: // 침대 클로징
@@ -239,30 +237,20 @@ public class CameraView : MonoBehaviour
 
             case (int)CameraLocation.BG_Lamp_Drawer: //  서랍
                 buggeymanbtn.BuggeyAppearDrawer();
-                Debug.Log("운이 좋았다");
-
                 break;            
 
             case (int)CameraLocation.BG_Door_Door:
                 buggeymanbtn.BuggeyAppearDoor_Door();// 문 클로징
-                KeyBtn.SetActive(true); // Key 버튼
-                // 근데 이게 업데이트로 들어가서 계속 켜지는 거 아닝가?
-                //ㅋ맞음 if문 해야되낭,,,,
+                KeyBtn.SetActive(true); // Key 버튼 - 현재는 NextCamera() 실행 안돼서 시간도 안먹고 버튼 안 뜸
                 break;
 
             default:
                 KeyBtn.SetActive(false);
                 HideBtn.SetActive(false);
+                buggeymanbtn.buggey.SetActive(false); // 일단 부기 꺼질 수 있게
                 expansionbtn.OpenGauge.SetActive(false);
                 break;
         }
-        // 업데이트에 넣으니까 부기 등장할 때까지 찾는데
-        // 어따 넣어야되지???
-
-            
-        // 아냐 걍 함수 자체로 갖고와
-        // 스위치로 어디일 때 부기맨 함수 실행,
-        // 초기화 필수
     }
 }
 
