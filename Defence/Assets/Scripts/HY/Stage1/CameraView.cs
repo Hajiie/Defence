@@ -70,10 +70,11 @@ public class CameraView : MonoBehaviour
             if (Cameras[i].gameObject.activeSelf == true) // 해당 카메라가 켜져있으면
             {
                 currentImgLocation = i; // 해당 카메라 위치 = 현재 위치  
-                ArrowOnOff(); // 이동 버튼
+                ArrowOnOff(); // 이동 버튼 / 이거 NextCameraOn으로 옮기고 싶은데 'i' 지역변수 갖고 올 방법이 있나?
             }
+            
 
-            if (currentImgLocation == (int)CameraView.CameraLocation.BG_Door_Door) // BG_Door_Door이면
+            if (currentImgLocation == (int)CameraLocation.BG_Door_Door) // BG_Door_Door이면
             {
                 if (time_max > 0)
                 {
