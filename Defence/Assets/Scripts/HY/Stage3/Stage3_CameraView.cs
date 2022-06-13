@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stage3_CameraView : MonoBehaviour
+public class Stage3_CameraView : MonoBehaviour // Stage3 카메라 이동
 {
     CameraLocation currentLocation;
     [SerializeField] List<Camera> Cameras = new List<Camera>();
@@ -10,6 +10,7 @@ public class Stage3_CameraView : MonoBehaviour
 
     Camera NowCamera; // 다른 스트립트는 안갖고옴
     //CameraView cameraview; // Stage1 스크립트 갖고옴
+    BuggeymanBtn buggeymanscript;
     public GameObject downArrow;
 
     int currentImgLocation;
@@ -66,7 +67,7 @@ public class Stage3_CameraView : MonoBehaviour
             }
         }
 
-        //BuggeyOnOff(nextcamera); // 부기 등장 확률 함수 / 카메라 이동할 때마다 실행
+        BuggeyOnOff(nextcamera); // 부기 등장 확률 함수 / 카메라 이동할 때마다 실행
     }
 
     public void DownArrow() // 아래 이동 버튼 눌렀을 때
@@ -77,4 +78,44 @@ public class Stage3_CameraView : MonoBehaviour
     // BG_Closet 에서 '스프라이트 바꿔지면 or 스프라이트 켜지면'이라는 조건 필요
     // 옷장 열리면 부기맨 등장
     // 10초 지나면 부기맨 등장
+
+    public void BuggeyOnOff(int x) // x = 현재 위치 / 부기맨 + 버튼 등장
+    {
+        // 위치만 그때그때 받고,
+        // 이동할 때만 함수 실행 시켜야함
+        /*switch (x)
+        {
+            case (int)CameraLocation.BG_Lock_Closet: // 옷장
+                buggeymanbtn.BuggeyAppearCloset();
+                break;
+
+            case (int)CameraLocation.BG_UndertheBed: // 침대 밑
+                buggeymanbtn.BuggeyAppearUndertheBed();
+                HideBtn.SetActive(true);
+                break;
+
+            case (int)CameraLocation.BG_Bed_Bed: // 침대 클로징
+                HideBtn.SetActive(true); // Hide 버튼
+                break;
+
+            case (int)CameraLocation.BG_Lamp_Drawer: //  서랍
+                buggeymanbtn.BuggeyAppearDrawer();
+                break;
+
+            case (int)CameraLocation.BG_Door_Door:
+                buggeymanbtn.BuggeyAppearDoor_Door();// 문 클로징
+                KeyBtn.SetActive(true); // Key 버튼 - 현재는 NextCamera() 실행 안돼서 시간도 안먹고 버튼 안 뜸
+                break;
+
+            default:
+                KeyBtn.SetActive(false);
+                HideBtn.SetActive(false);
+                buggeymanbtn.buggey.SetActive(false); // 일단 부기 꺼질 수 있게
+                expansionbtn.OpenGauge.SetActive(false);
+                break;
+        }
+        */
+    }
+
+    // Stage3 부기맨 등장 확률 받으면 위치 지정해주고 함수 넣어주면 됨
 }
