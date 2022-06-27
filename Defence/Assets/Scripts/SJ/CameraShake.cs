@@ -12,6 +12,10 @@ public class CameraShake : MonoBehaviour
     [SerializeField] [Range(0.01f, 0.1f)] float shakeRange = 0.05f;
     [SerializeField] [Range(0.1f, 1f)] float duration = 0.5f;
 
+    private void Update()
+    {
+        shake();
+    }
     public void shake()
     {
         cameraPos = mainCamera.transform.position;

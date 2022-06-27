@@ -15,6 +15,9 @@ public class Shootgun : MonoBehaviour
 
     public Text ScriptTxt;
 
+    RaycastHit2D hit;
+
+    GameObject Buggeyman;
     GameObject shootButton;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,8 @@ public class Shootgun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Ray ray = new Ray(ScreenCenter, transform.forward);
+
         if (bulletCnt == 0 && hitCnt == 2) { } // hit all bullets then to next stage
 
         if (miss >= 2)
@@ -39,21 +44,23 @@ public class Shootgun : MonoBehaviour
     }
     public void OnclickFireGun()
     {
-        ScreenCenter = Camera.main.ScreenToWorldPoint(ScreenCenter); 
-        RaycastHit2D hit = Physics2D.Raycast(ScreenCenter,transform.forward, 15f); // cross-hair is Screencenter
+        ScreenCenter = Camera.main.ScreenToWorldPoint(ScreenCenter);
+        
+        hit = Physics2D.Raycast(ScreenCenter, transform.forward, 15f); // cross-hair is Screencenter
 
         CheckTarget(hit);
+        bulletCnt--;
         ShowbulletCnt();
-        
+        transform.rotation = Quaternion.Euler(30, 0, 0);
     }
     void ShowbulletCnt()
     {
-        bulletCnt--;
+        
         ScriptTxt.text = "x" + bulletCnt.ToString(); // show the num of bullets
     }
     void CheckTarget(RaycastHit2D hit)
     {
-        if (hit.transform.tag == "Buggey") // if hits buggey
+        if (hit == Buggeyman) // if hits buggey
         {
             this.hitCnt++;
         }
