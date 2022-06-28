@@ -56,6 +56,8 @@ public class ExpansionBtn: MonoBehaviour
                         break;
                         //침대 클로징 추가
                 }
+
+                btns[i].SetActive(false);
             }
         }
     }

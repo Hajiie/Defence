@@ -14,7 +14,7 @@ public class DetectObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && this.GetComponent<ControlLight>().HandLight.activeSelf)
+        if (Input.GetMouseButton(0) && this.GetComponent<ControlLight>().HandLight.activeSelf)
         {
             isObj();//오브젝트 인지 체크
         }

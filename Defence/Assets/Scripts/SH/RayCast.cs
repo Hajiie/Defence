@@ -16,7 +16,7 @@ public class RayCast : MonoBehaviour
     void Update()
     {
         mainCamera = this.GetComponent<CameraView>().getCamera;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             hit = Physics2D.Raycast(ray.origin, ray.direction);
