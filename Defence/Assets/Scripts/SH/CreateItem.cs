@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CreateItem : MonoBehaviour
 {
     private bool IsFirstSearch;
+    public GameObject itemOBJ;
     public GameObject batteryOBJ;
 
     public GameObject clipOBJ;
@@ -25,17 +26,19 @@ public class CreateItem : MonoBehaviour
 
     void Search()
     {
-        if (IsFirstSearch)
+        if (this.GetComponent<CameraView>().getCamera.name == "BG_Lock_OntheTable"||this.GetComponent<CameraView>().getCamera.name == "BG_UndertheBed")
         {
-            if (this.GetComponent<CameraView>().getCamera.name == "BG_Lock_OntheTable")
+            print("1 IF문 성공");
+            if (IsFirstSearch)
             {
-                Instantiate(batteryOBJ).transform.position = new Vector3(10,20, 0);
+                print("2 IF문 성공");
+                Instantiate(batteryOBJ, itemOBJ.transform).transform.position =
+                    new Vector3(0,this.GetComponent<CameraView>().getCamera.transform.position.y,0);
+                IsFirstSearch = false;
+                //Instantiate(batteryOBJ).transform.parent=itemOBJ.transform; //.transform.position = new Vector3(10,20, 0);
             }
-            else if (this.GetComponent<CameraView>().getCamera.name == "BG_Lock_OntheTable")
-            {
-                
-            }
-            IsFirstSearch = false;
+            
+            
         }
     }
 }

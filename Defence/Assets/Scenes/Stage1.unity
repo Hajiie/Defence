@@ -2619,6 +2619,7 @@ GameObject:
   - component: {fileID: 978207286}
   - component: {fileID: 978207287}
   - component: {fileID: 978207285}
+  - component: {fileID: 978207291}
   - component: {fileID: 978207289}
   - component: {fileID: 978207290}
   - component: {fileID: 978207288}
@@ -2837,6 +2838,23 @@ MonoBehaviour:
   cameraview: {fileID: 978207289}
   OpenGauge: {fileID: 1852128516}
   sceneName: Stage3
+--- !u!114 &978207291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978207278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa969d26a42dd41fbb5bf9014a5d1533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemOBJ: {fileID: 1969423589}
+  batteryOBJ: {fileID: 5332952236549400791, guid: fb5bbbb3a82387d4db2114fb34446ad3,
+    type: 3}
+  clipOBJ: {fileID: 6632398299128578543, guid: 7794f06a5ebe3be44ada6e3ca7500582, type: 3}
+  bulletOBJ: {fileID: 0}
 --- !u!1 &1003092333
 GameObject:
   m_ObjectHideFlags: 0
