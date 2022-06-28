@@ -9,6 +9,7 @@ TagManager:
   - Cabinet
   - Closet
   - LeftRightArrow
+  - CrossHair
   layers:
   - Default
   - TransparentFX

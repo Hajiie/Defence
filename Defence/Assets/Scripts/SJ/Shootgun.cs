@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shootgun : MonoBehaviour
 {
-    private Vector3 ScreenCenter;
+    private Vector3 CrossHairpos;
 
     static public int miss;
 
@@ -17,23 +17,27 @@ public class Shootgun : MonoBehaviour
 
     RaycastHit2D hit;
 
-    GameObject Buggeyman;
+    public GameObject CrossHair;
+    public GameObject Buggeyman;
     GameObject shootButton;
     // Start is called before the first frame update
     void Start()
-    {
-        ScreenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
+    {    
+        CrossHairpos = new Vector3(CrossHair.transform.position.x, CrossHair.transform.position.y);
+
         ScriptTxt.text ="x" + bulletCnt.ToString();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        Ray ray = new Ray(ScreenCenter, transform.forward);
+    { 
+        CrossHairpos = new Vector3(CrossHair.transform.position.x, CrossHair.transform.position.y);
+
+        Ray ray = new Ray(CrossHairpos, transform.forward);
 
         if (bulletCnt == 0 && hitCnt == 2) { } // hit all bullets then to next stage
 
-        if (miss >= 2)
+        if (miss > 0)
         {
             gameOver = true;
         }
@@ -44,18 +48,14 @@ public class Shootgun : MonoBehaviour
     }
     public void OnclickFireGun()
     {
-        ScreenCenter = Camera.main.ScreenToWorldPoint(ScreenCenter);
-        
-        hit = Physics2D.Raycast(ScreenCenter, transform.forward, 15f); // cross-hair is Screencenter
+        hit = Physics2D.Raycast(CrossHairpos, transform.forward, 15f); // cross-hair is Screencenter
 
         CheckTarget(hit);
         bulletCnt--;
         ShowbulletCnt();
-        transform.rotation = Quaternion.Euler(30, 0, 0);
     }
     void ShowbulletCnt()
     {
-        
         ScriptTxt.text = "x" + bulletCnt.ToString(); // show the num of bullets
     }
     void CheckTarget(RaycastHit2D hit)
