@@ -1345,8 +1345,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1258531240}
   - {fileID: 1003092337}
+  - {fileID: 1258531240}
   - {fileID: 1832398548}
   - {fileID: 1484542073}
   - {fileID: 1170892864}
@@ -2801,6 +2801,7 @@ MonoBehaviour:
   - {fileID: 1276019633}
   - {fileID: 2116098140}
   - {fileID: 1130702860}
+  inven: {fileID: 0}
   buggeymanbtn: {fileID: 978207288}
   expansionbtn: {fileID: 978207290}
   time_max: 10
@@ -2809,6 +2810,7 @@ MonoBehaviour:
   leftrightArrow: {fileID: 1272963675}
   HideBtn: {fileID: 851005188}
   KeyBtn: {fileID: 1180176939}
+  isClipSet: 0
 --- !u!114 &978207290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2836,6 +2838,7 @@ MonoBehaviour:
   - {fileID: 2123011236}
   - {fileID: 1500956395}
   cameraview: {fileID: 978207289}
+  inven: {fileID: 0}
   OpenGauge: {fileID: 1852128516}
   sceneName: Stage3
 --- !u!114 &978207291
@@ -2968,7 +2971,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 518362616}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014823433
 GameObject:
@@ -4353,7 +4356,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 518362616}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1258531241
 MonoBehaviour:
@@ -4493,7 +4496,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c8f9c2c371dbcc74a835f8c25e07efa4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3cec704200624d1499e15e48345ad091, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

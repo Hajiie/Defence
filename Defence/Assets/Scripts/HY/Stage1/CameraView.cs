@@ -9,6 +9,7 @@ public class CameraView : MonoBehaviour
     [SerializeField] List<GameObject> Backgrounds = new List<GameObject>();
 
     Camera NowCamera;
+    public Inventory inven;
     public BuggeymanBtn buggeymanbtn;
     public ExpansionBtn expansionbtn;
 
@@ -45,6 +46,7 @@ public class CameraView : MonoBehaviour
         BG_Door = 10, // 문 있는 방
         BG_Door_Door = 11, // 문 있는 방
     }
+    public bool isClipSet;
 
     void Start()
     {
@@ -225,6 +227,7 @@ public class CameraView : MonoBehaviour
         {
             case (int)CameraLocation.BG_Lock_Closet: // 옷장
                 buggeymanbtn.BuggeyAppearCloset();
+               
                 break;            
 
             case (int)CameraLocation.BG_UndertheBed: // 침대 밑
@@ -242,7 +245,15 @@ public class CameraView : MonoBehaviour
 
             case (int)CameraLocation.BG_Door_Door:
                 buggeymanbtn.BuggeyAppearDoor_Door();// 문 클로징
-                KeyBtn.SetActive(true); // Key 버튼 - 현재는 NextCamera() 실행 안돼서 시간도 안먹고 버튼 안 뜸
+
+                if (inven.ClipNum > 0 && inven.ClipNum <= 2) // 클립 하나 이상일 때
+                {
+                    KeyBtn.SetActive(true);
+                }
+                else
+                    KeyBtn.SetActive(false);
+                
+                 // Key 버튼 - 현재는 NextCamera() 실행 안돼서 시간도 안먹고 버튼 안 뜸
                 break;
 
             default:

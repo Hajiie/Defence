@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Clip : MonoBehaviour
 {
-    int clip_num;
+    public int clip_num;
     Inventory Inven;
     public Text cliptext;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class Clip : MonoBehaviour
         IsClipGet();
     }
 
-    void IsClipGet()
+    public void IsClipGet()
     {
         if (clip_num != Inven.ClipNum)//현재 가지고 있는 클립과 비교 시 인벤토리에 클립이 늘었을 시
         {

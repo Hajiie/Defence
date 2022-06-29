@@ -11,6 +11,7 @@ public class ExpansionBtn: MonoBehaviour
     [SerializeField] List<Image> bars = new List<Image>();
 
     public CameraView cameraview;
+    public Inventory inven;
     public GameObject OpenGauge;
     public string sceneName;
 
@@ -66,8 +67,10 @@ public class ExpansionBtn: MonoBehaviour
 
     public void KeyOnclick() // Door_Door에서 나오는 KeyBtn
     {
+        inven.ClipNum += inven.ClipNum; // 클립 -1  
         cameraview.KeyBtn.SetActive(false); // Key버튼 끄기
-        OpenGauge.SetActive(true); // 게이지 이미지 켜주기
+          OpenGauge.SetActive(true); // 게이지 이미지 켜주기
+
     }
 
     public void KeyIconOnClick() // KeyBtn 누르면 나오는 KeyIconBtn
