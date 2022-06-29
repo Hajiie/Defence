@@ -53,7 +53,11 @@ public class Battery : MonoBehaviour
         if (battery_num < Inven.BatteryNum)//현재 사용하고 있는 배터리와 비교 시 인벤토리의 배터리가 늘었을 시 
         {
             battery_num = Inven.BatteryNum;//새롭게 초기화
-            battery.transform.GetChild(battery_num - 1).gameObject.SetActive(true);//배터리양 만큼 배터리 표시
+            for (int i = 0; i < 4; i++)
+            {
+                battery.transform.GetChild(i).gameObject.SetActive(true);//배터리양 만큼 배터리 표시
+            }
+            
             //time.TimerInit();
         }
     }

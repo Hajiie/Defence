@@ -58,6 +58,7 @@ public class ExpansionBtn: MonoBehaviour
                 }
 
                 btns[i].SetActive(false);
+                this.GetComponent<RayCast>().getHit = new RaycastHit2D();
                 break;
             }
         }

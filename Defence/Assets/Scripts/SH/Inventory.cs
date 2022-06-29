@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
             switch (value)//1의 값이면 배터리 get, -1의 값이면 배터리 use
             {
                 case 1:
-                    battery_num += 1;
+                    battery_num = 4;
                     break;
                 case -1:
                     battery_num -= 1;

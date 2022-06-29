@@ -8,6 +8,8 @@ public class BuggeymanBtn : MonoBehaviour
     public GameObject buggey;
     public CameraView cameraview;
 
+    private bool IsExistBuggey;
+
     // 10초 테스트
 
     // 화면 전환됐을 때, 어떤 확률로 등장하는 지만 구현되어 있음
@@ -16,7 +18,10 @@ public class BuggeymanBtn : MonoBehaviour
     // 0되면 멈춤
 
 
-
+    public bool IsBuggey
+    {
+        get { return IsExistBuggey; }
+    }
     public void BuggeyAppearCloset() // 옷장 클로징 + 오픈 후
     {
         BuggeyAppear(50); // 첫 오픈
@@ -28,12 +33,12 @@ public class BuggeymanBtn : MonoBehaviour
 
     public void BuggeyAppearDrawer() // 서랍 클로징 후
     {
-        BuggeyAppear(40);
+        IsExistBuggey=BuggeyAppear(40);
     }
 
     public void BuggeyAppearUndertheBed() // 침대 밑
     {
-        BuggeyAppear(40);
+        IsExistBuggey = BuggeyAppear(40);
     }
 
     public void BuggeyAppearDoor_Door() // 문 클로징 후 / 침대에서 Hide 누르기 전까지 모든 화면에서 등장할 수 있음
@@ -51,7 +56,7 @@ public class BuggeymanBtn : MonoBehaviour
         // 6초 지나면 50퍼센트 확률
     }
 
-    public void BuggeyAppear(int num) // 부기맨 등장 함수(확률)
+    public bool BuggeyAppear(int num) // 부기맨 등장 함수(확률)
     {
         int xcount = Random.Range(1, 101); // 1 ~ 100에서 하나 뽑은거
         // random 값이 1~10 나오면 10%
@@ -60,16 +65,17 @@ public class BuggeymanBtn : MonoBehaviour
             if (xcount >= 0 && xcount < num)
             {
                 buggey.SetActive(true);
+                return true;
                 // 게임오버
                 //Debug.Log(xcount);
             }
             // xcount 값이 해당 범위 안에 있으면
-
             else
             {
                 //Debug.Log(xcount);
-                return;
+                return false;
             }
-            
+
+        return false;
     }
 }
