@@ -1392,9 +1392,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAE30\uD68D\n\uACE0\uD76C\uC9C4, \uCD5C\uC218\uC885\n\n\n\uD504\uB85C\uADF8\uB798\uBC0D\n\uAE40\uB3C4\uC5F0\r,
+  m_Text: "\uAE30\uD68D\n\uACE0\uD76C\uC9C4, \uCD5C\uC885\uC6D0\n\n\n\uD504\uB85C\uADF8\uB798\uBC0D\n\uAE40\uB3C4\uC5F0\r,
     \uBC15\uC9C0\uD601\r, \uC774\uC131\uD76C\r, \uC774\uC218\uC885\r, \uC774\uD558\uC601\n\n\n\uADF8\uB798\uD53D\n\uBB38\uC11C\uC5F0,
-    \uAE40\uD6A8\uBBFC\n\n\n\uC0AC\uC6B4\uB4DC\n\uC720\uC218\uC9C4"
+    \uAE40\uD6A8\uBBFC\n\n\uC0AC\uC6B4\uB4DC\n\uC720\uC218\uC9C4\n\n\uC0AC\uC6B4\uB4DC\n\uC720\uC218\uC9C4"
 --- !u!222 &1296038704
 CanvasRenderer:
   m_ObjectHideFlags: 0
