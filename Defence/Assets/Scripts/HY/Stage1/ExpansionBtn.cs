@@ -67,7 +67,7 @@ public class ExpansionBtn: MonoBehaviour
 
     public void KeyOnclick() // Door_Door에서 나오는 KeyBtn
     {
-        inven.ClipNum += inven.ClipNum; // 클립 -1  
+        // inven.ClipNum -= inven.ClipNum; // 클립 -1 / 이 변수 맞나요,,
         cameraview.KeyBtn.SetActive(false); // Key버튼 끄기
           OpenGauge.SetActive(true); // 게이지 이미지 켜주기
 
