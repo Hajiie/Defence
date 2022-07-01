@@ -25,6 +25,7 @@ public class DetectObject : MonoBehaviour
         hit = this.GetComponent<RayCast>().getHit;
         if (hit && this.gameObject.GetComponent<ControlLight>().HandLight.activeSelf)
         {//손전등이 켜져있을 때
+            //Debug.Log("if 들어옴");
             if (hit.transform.GetComponent<SelectObject>())
             {
                 Debug.Log(hit.transform.GetComponent<SelectObject>().obj.objectType);

@@ -22,6 +22,6 @@ public class LightOnOff : MonoBehaviour
     }
     public void ShowTempMessage()
     {
-        Debug.Log("버튼이 눌렸습니다. 아직 만드는 중..");
+        Debug.Log("연결된 씬으로 이동");
     }
 }

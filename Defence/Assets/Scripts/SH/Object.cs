@@ -9,8 +9,11 @@ public class Object : ScriptableObject
     {
         Closet,
         Drawer,
-        DeskDrawer,
+        Desk,
         Bed,
+        Toybox,
+        Window,
+        Lamp,
         Door
     }
     public string objectName;
