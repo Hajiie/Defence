@@ -28,7 +28,7 @@ public class DetectObject : MonoBehaviour
             //Debug.Log("if 들어옴");
             if (hit.transform.GetComponent<SelectObject>())
             {
-                Debug.Log(hit.transform.GetComponent<SelectObject>().obj.objectType);
+                //Debug.Log(hit.transform.GetComponent<SelectObject>().obj.objectType);
                 hit.transform.GetComponent<SelectObject>().ObjBtn.SetActive(true);
             }
             else
