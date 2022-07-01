@@ -12,6 +12,7 @@ public class ExpansionBtn: MonoBehaviour
 
     public CameraView cameraview;
     public Inventory inven;
+    public Open open;
     public GameObject OpenGauge;
     public string sceneName;
 
@@ -51,6 +52,7 @@ public class ExpansionBtn: MonoBehaviour
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lamp_Window);
                         break;
                     case 8: // 문
+                        //open.OpenDoor();
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Door_Door);
                         break;
                     default:

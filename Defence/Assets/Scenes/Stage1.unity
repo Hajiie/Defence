@@ -2114,18 +2114,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 606314286}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 978207279}
-        m_MethodName: OpenDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &606314286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3445,7 +3434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: -7519468445459229110, guid: be4781c939b294ebeb26eadf4f0802e9, type: 3}
-  btn: {fileID: 606314283}
+  btn: {fileID: 1617308244}
 --- !u!114 &978207280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3644,6 +3633,7 @@ MonoBehaviour:
   - {fileID: 1500956395}
   cameraview: {fileID: 978207289}
   inven: {fileID: 0}
+  open: {fileID: 0}
   OpenGauge: {fileID: 1852128516}
   sceneName: Stage3
 --- !u!114 &978207291
@@ -7078,7 +7068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 441, y: 95}
+  m_AnchoredPosition: {x: 120, y: 95}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1617308246
@@ -8156,7 +8146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1877861796
 Transform:
   m_ObjectHideFlags: 0
@@ -8233,7 +8223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1454c1fb0339744e92be0cdcf3d74cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjBtn: {fileID: 606314283}
+  ObjBtn: {fileID: 1617308244}
   obj: {fileID: 11400000, guid: 18449623c4b3ccb4bb5574f661fa76e2, type: 2}
   scpMng: {fileID: 978207278}
 --- !u!61 &1877861799

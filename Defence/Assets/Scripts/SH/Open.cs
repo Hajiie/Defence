@@ -32,7 +32,7 @@ public class Open : MonoBehaviour
     {
         if (this.GetComponent<Inventory>().ClipNum > 0)
         {
-            btn.GetComponent<Image>().sprite = img;
+            //btn.GetComponent<Image>().sprite = img;
             this.GetComponent<Inventory>().ClipNum = -1;
         }
     }
