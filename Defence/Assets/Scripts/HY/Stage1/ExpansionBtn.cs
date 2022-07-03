@@ -13,10 +13,16 @@ public class ExpansionBtn: MonoBehaviour
     public CameraView cameraview;
     public Inventory inven;
     public Open open;
+    //public Clip clip;
     public GameObject OpenGauge;
     public string sceneName;
 
 
+
+    private void Start()
+    {
+        //clip = GetComponent<Clip>();
+    }
     public void Expand() // 가구 버튼 누르면 클로징 씬으로 이동 - 해당 버튼이 SetActive(true)인가?
 
     {
@@ -69,15 +75,17 @@ public class ExpansionBtn: MonoBehaviour
 
     public void KeyOnclick() // Door_Door에서 나오는 KeyBtn
     {
-        //inven.clip_num = 7;
-        //inven.clip_num -= inven.clip_num; // 클립 -1 / 이 변수 맞나요,,
         cameraview.KeyBtn.SetActive(false); // Key버튼 끄기
           OpenGauge.SetActive(true); // 게이지 이미지 켜주기
-
+        //clip.clip_num--;
+        // inven의 clip 값을 바꿔줘야함
+        // clip에서 업뎃됨
     }
 
     public void KeyIconOnClick() // KeyBtn 누르면 나오는 KeyIconBtn
     {
+
+
         if (hp[0] == 0 && !(hp[1] == 0))
             GaugebarDown(1); // 두번째 바
 
@@ -86,7 +94,6 @@ public class ExpansionBtn: MonoBehaviour
             GaugebarDown(2); // 세번째 바
             //SceneManager.LoadScene(sceneName);
             // Stage 3으로 넘어가기 
-
         }
 
         else

@@ -22,10 +22,11 @@ public class Open : MonoBehaviour
         {
             btn.SetActive(true);
         }
-        else
+        /*else
         {
             btn.SetActive(false);
         }
+        */
     }
 
     public void OpenDoor()

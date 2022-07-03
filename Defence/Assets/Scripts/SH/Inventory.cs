@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private int battery_num = 2;
+    private int battery_num = 3;
     public int clip_num = 0;
     // Start is called before the first frame update
     void Start()

@@ -9,7 +9,7 @@ public class CameraView : MonoBehaviour
     [SerializeField] List<GameObject> Backgrounds = new List<GameObject>();
 
     Camera NowCamera;
-    public Inventory inven;
+    Clip clip;
     public BuggeymanBtn buggeymanbtn;
     public ExpansionBtn expansionbtn;
 
@@ -50,6 +50,7 @@ public class CameraView : MonoBehaviour
 
     void Start()
     {
+        clip = GetComponent<Clip>();
         currentLocation = CameraLocation.BG_Lock;
         NowCamera = Cameras[(int)CameraLocation.BG_Lock];
         for (int i = 0; i < Cameras.Count; i++)
@@ -71,8 +72,8 @@ public class CameraView : MonoBehaviour
         {
             if (Cameras[i].gameObject.activeSelf == true) // 해당 카메라가 켜져있으면
             {
-                currentImgLocation = i; // 해당 카메라 위치 = 현재 위치  
-                ArrowOnOff(); // 이동 버튼 / 이거 NextCameraOn으로 옮기고 싶은데 'i' 지역변수 갖고 올 방법이 있나?
+                currentImgLocation = i; // 해당 카메라 위치 = 현재 위치
+                ArrowOnOff(); // 이동 버튼
             }
             
 
@@ -152,17 +153,22 @@ public class CameraView : MonoBehaviour
         {
             NextCameraOn((int)CameraLocation.BG_Bed);
         }
-        else if(currentImgLocation == ((int)CameraLocation.BG_Lock_IntheTable)|| currentImgLocation == ((int)CameraLocation.BG_Lock_OntheTable)|| currentImgLocation == ((int)CameraLocation.BG_Lock_Closet))
+        else if(currentImgLocation == ((int)CameraLocation.BG_Lock_IntheTable)||
+            currentImgLocation == ((int)CameraLocation.BG_Lock_OntheTable)||
+            currentImgLocation == ((int)CameraLocation.BG_Lock_Closet))
         // BG_Lock으로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Lock);
         }
-        else if (currentImgLocation == ((int)CameraLocation.BG_Lamp_ToyBox) || currentImgLocation == ((int)CameraLocation.BG_Lamp_Lamp) || currentImgLocation == ((int)CameraLocation.BG_Lamp_Drawer) || currentImgLocation == ((int)CameraLocation.BG_Lamp_Window))
+        else if (currentImgLocation == ((int)CameraLocation.BG_Lamp_ToyBox) || 
+            currentImgLocation == ((int)CameraLocation.BG_Lamp_Lamp) || 
+            currentImgLocation == ((int)CameraLocation.BG_Lamp_Drawer) || 
+            currentImgLocation == ((int)CameraLocation.BG_Lamp_Window))
         // BG_Lamp으로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Lamp);
         }
-        else if (currentImgLocation == ((int)CameraLocation.BG_Door_Door))
+        else //(currentImgLocation == ((int)CameraLocation.BG_Door_Door))
         // BG_Door로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Door);
@@ -187,7 +193,15 @@ public class CameraView : MonoBehaviour
 
     public void ArrowOnOff() // 화살표
     {
-        if (currentImgLocation == (int)CameraLocation.BG_Lock || currentImgLocation == (int)CameraLocation.BG_Bed || currentImgLocation == (int)CameraLocation.BG_Lamp || currentImgLocation == (int)CameraLocation.BG_Door)
+        HashSet<CameraLocation> OKCameraLocations = new HashSet<CameraLocation>()
+        {
+            CameraLocation.BG_Lock,
+            CameraLocation.BG_Bed,
+            CameraLocation.BG_Lamp,
+            CameraLocation.BG_Door,
+        };
+
+        if(OKCameraLocations.Contains((CameraLocation)currentImgLocation))
             // Lock,Lamp,Bed,Door에서 왼쪽오른쪽 버튼 켜주기
         {
             leftrightArrow.SetActive(true);
@@ -204,6 +218,7 @@ public class CameraView : MonoBehaviour
         }
         else // 클로징 화면 + UndertheBed
         {
+
             leftrightArrow.SetActive(false);
             downArrow.SetActive(true);
             if (currentImgLocation == (int)CameraLocation.BG_UndertheBed) //undertheBed에서만 위 버튼 켜주기   
@@ -227,7 +242,6 @@ public class CameraView : MonoBehaviour
         {
             case (int)CameraLocation.BG_Lock_Closet: // 옷장
                 buggeymanbtn.BuggeyAppearCloset();
-               
                 break;            
 
             case (int)CameraLocation.BG_UndertheBed: // 침대 밑
@@ -246,7 +260,7 @@ public class CameraView : MonoBehaviour
             case (int)CameraLocation.BG_Door_Door:
                 buggeymanbtn.BuggeyAppearDoor_Door();// 문 클로징
 
-                if (inven.ClipNum > 0 && inven.ClipNum <= 2) // 클립 하나 이상일 때
+                if (clip.clip_num > 0 && clip.clip_num <= 2) // 클립 하나 이상일 때
                 {
                     KeyBtn.SetActive(true);
                 }
