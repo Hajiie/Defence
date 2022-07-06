@@ -52,6 +52,7 @@ public class Inventory : MonoBehaviour
                     clip_num -= 1;
                     break;
                 default:
+                    clip_num = value;
                     break;
             }
         }

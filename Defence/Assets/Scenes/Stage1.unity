@@ -3594,7 +3594,6 @@ MonoBehaviour:
   - {fileID: 1276019633}
   - {fileID: 2116098140}
   - {fileID: 1130702860}
-  inven: {fileID: 0}
   buggeymanbtn: {fileID: 978207288}
   expansionbtn: {fileID: 978207290}
   time_max: 10
