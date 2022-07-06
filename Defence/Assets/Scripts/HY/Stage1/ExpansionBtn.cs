@@ -11,12 +11,12 @@ public class ExpansionBtn: MonoBehaviour
     [SerializeField] List<Image> bars = new List<Image>();
 
     public CameraView cameraview;
-    public Inventory inven;
-    public Open open;
-    //public Clip clip;
+    //public Inventory inven;
+    //public Open open;
     public GameObject OpenGauge;
     public string sceneName;
 
+    public Animator anim;
 
 
     private void Start()
@@ -30,40 +30,53 @@ public class ExpansionBtn: MonoBehaviour
         {
             if (btns[i].activeSelf) // 해당 확대 버튼이 active면
             {
-                //Debug.Log(i);
                 switch (i) // 버튼 번호에 따라
                 {
+                    // 확대 버튼
+
                     case 0: // 옷장
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_Closet);
                         break;
                     case 1: // 책상 위
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_OntheTable);
+                        anim.SetBool("IsTableClosing", true);
                         break;
-                    case 2: // 책상 서랍
-                        cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_IntheTable);
-                        break;
-                    case 3: // 침대
+                    case 2: // 침대 확대
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Bed_Bed);
                         break;
-                    case 4: // 장난감 박스
+                    case 3: // 장난감 박스
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lamp_ToyBox);
                         break;
-                    case 5: // 램프
+                    case 4: // 램프
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lamp_Lamp);
                         break;
-                    case 6: // 서랍
+                    case 5: // 서랍1
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lamp_Drawer);
                         break;
-                    case 7: // 창문
+                    case 6: // 창문
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lamp_Window);
                         break;
-                    case 8: // 문
+                    case 7: // 문
                         //open.OpenDoor();
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Door_Door);
                         break;
+                    case 8: // 책상 서랍1
+                        cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_IntheTable);
+                        break;
+                    
+                        // 열기 버튼
+                       
+                    case 9: // 책상 서랍2 - 서랍 열기 버튼
+                            // 애니메이션 실행
+                        //anim.SetBool("isTableOpened", true);
+                        break;
+                    case 10: // 옷장2 - 옷장 열기 버튼
+                        // 애니메이션 실행
+                        break;
+                    case 11: // 서랍2 - 서랍 열기 버튼
+                        // 애니메이션 실행
                     default:
                         break;
-                        //침대 클로징 추가
                 }
 
                 btns[i].SetActive(false);
@@ -78,8 +91,7 @@ public class ExpansionBtn: MonoBehaviour
         cameraview.KeyBtn.SetActive(false); // Key버튼 끄기
         OpenGauge.SetActive(true); // 게이지 이미지 켜주기
         this.GetComponent<Inventory>().ClipNum = -1;
-        // inven의 clip 값을 바꿔줘야함
-        // clip에서 업뎃됨
+
     }
 
     public void KeyIconOnClick() // KeyBtn 누르면 나오는 KeyIconBtn
