@@ -23,6 +23,7 @@ public class ExpansionBtn: MonoBehaviour
     {
         //clip = GetComponent<Clip>();
     }
+
     public void Expand() // 가구 버튼 누르면 클로징 씬으로 이동 - 해당 버튼이 SetActive(true)인가?
 
     {
