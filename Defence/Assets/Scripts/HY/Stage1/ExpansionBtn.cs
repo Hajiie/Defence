@@ -124,6 +124,6 @@ public class ExpansionBtn: MonoBehaviour
     void GaugebarDown(int i) // bar[i]의 fillAmount 감소
     {
         hp[i] -= 1;
-        bars[i].fillAmount = hp[i] * 0.02f;
+        bars[i].fillAmount = hp[i] * 0.01f;
     }
 }

@@ -3287,6 +3287,8 @@ MonoBehaviour:
   leftrightArrow: {fileID: 1272963675}
   HideBtn: {fileID: 851005188}
   KeyBtn: {fileID: 1180176939}
+  leftBtn: {fileID: 1407658465}
+  rightBtn: {fileID: 1993626450}
   isClipSet: 0
 --- !u!114 &978207290
 MonoBehaviour:
@@ -6847,7 +6849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 884, y: -309}
+  m_AnchoredPosition: {x: 246, y: 91}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1617308246

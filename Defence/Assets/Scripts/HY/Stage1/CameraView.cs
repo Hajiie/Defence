@@ -27,6 +27,7 @@ public class CameraView : MonoBehaviour
     public GameObject leftrightArrow;
     public GameObject HideBtn;
     public GameObject KeyBtn;
+    public GameObject leftBtn, rightBtn;
 
     public enum CameraLocation // 옮겨진 카메라 위치
     {
@@ -75,6 +76,7 @@ public class CameraView : MonoBehaviour
             if (Cameras[i].gameObject.activeSelf == true) // 해당 카메라가 켜져있으면
             {
                 currentImgLocation = i; // 해당 카메라 위치 = 현재 위치
+                //Debug.Log(currentImgLocation);
                 ArrowOnOff(); // 이동 버튼
             }
             
@@ -172,10 +174,11 @@ public class CameraView : MonoBehaviour
         {
             NextCameraOn((int)CameraLocation.BG_Lamp);
         }
-        else //(currentImgLocation == ((int)CameraLocation.BG_Door_Door))
+        else if(currentImgLocation == ((int)CameraLocation.BG_Door_Door))
         // BG_Door로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Door);
+            currentImgLocation = 10; // 이미지 번호 직접 넣어줌
         }
 
     }
@@ -191,8 +194,10 @@ public class CameraView : MonoBehaviour
                 Cameras[i].gameObject.SetActive(false);
             }
         }
-
+        
         BuggeyOnOff(nextcamera); // 부기 등장 확률 함수 / 카메라 이동할 때마다 실행
+        //ArrowOnOff(); // 이동 버튼
+        
     }  
 
     public void ArrowOnOff() // 화살표
@@ -208,7 +213,9 @@ public class CameraView : MonoBehaviour
         if(OKCameraLocations.Contains((CameraLocation)currentImgLocation))
             // Lock,Lamp,Bed,Door에서 왼쪽오른쪽 버튼 켜주기
         {
-            leftrightArrow.SetActive(true);
+            //leftrightArrow.SetActive(true);
+            leftBtn.SetActive(true);
+            rightBtn.SetActive(true);
             upArrow.SetActive(false);
             KeyBtn.SetActive(false); 
             HideBtn.SetActive(false);
@@ -220,10 +227,18 @@ public class CameraView : MonoBehaviour
             else
                 downArrow.SetActive(true);
         }
+        else if(currentImgLocation == (int)CameraLocation.BG_Door_Door)
+        {
+            leftBtn.SetActive(false);
+            rightBtn.SetActive(false);
+            downArrow.SetActive(true);
+            upArrow.SetActive(false);
+        }
         else // 클로징 화면 + UndertheBed
         {
-
-            leftrightArrow.SetActive(false);
+            leftBtn.SetActive(false);
+            rightBtn.SetActive(false);
+            //leftrightArrow.SetActive(false);
             downArrow.SetActive(true);
             if (currentImgLocation == (int)CameraLocation.BG_UndertheBed) //undertheBed에서만 위 버튼 켜주기   
             {
@@ -234,7 +249,6 @@ public class CameraView : MonoBehaviour
             {
                 upArrow.SetActive(false);
             }
-
         }
     }
 
