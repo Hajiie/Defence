@@ -39,7 +39,7 @@ public class ExpansionBtn: MonoBehaviour
                         break;
                     case 1: // 책상 위
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_OntheTable);
-                        anim.SetBool("IsTableClosing", true);
+                        anim.SetTrigger("IsTableClosed");
                         break;
                     case 2: // 침대 확대
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Bed_Bed);

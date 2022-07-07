@@ -3280,6 +3280,7 @@ MonoBehaviour:
   - {fileID: 1130702860}
   buggeymanbtn: {fileID: 978207288}
   expansionbtn: {fileID: 978207290}
+  anim: {fileID: 1466283402}
   time_max: 10
   upArrow: {fileID: 1437225464}
   downArrow: {fileID: 1921770689}

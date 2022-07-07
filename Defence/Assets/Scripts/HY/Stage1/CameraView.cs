@@ -13,6 +13,8 @@ public class CameraView : MonoBehaviour
     public BuggeymanBtn buggeymanbtn;
     public ExpansionBtn expansionbtn;
 
+    public Animator anim;
+
     public Camera getCamera
     {
         get { return NowCamera; }
@@ -159,6 +161,8 @@ public class CameraView : MonoBehaviour
         // BG_Lock으로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Lock);
+            anim.SetTrigger("IsTableClosed");
+
         }
         else if (currentImgLocation == ((int)CameraLocation.BG_Lamp_ToyBox) || 
             currentImgLocation == ((int)CameraLocation.BG_Lamp_Lamp) || 
