@@ -38,9 +38,9 @@ public class ExpansionBtn: MonoBehaviour
                     case 0: // 옷장
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_Closet);
                         break;
-                    case 1: // 책상 위
-                        cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_OntheTable);
-                        anim.SetTrigger("IsTableClosed");
+                    case 1: // 책상
+                        cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_Table);
+
                         break;
                     case 2: // 침대 확대
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Bed_Bed);
@@ -64,9 +64,17 @@ public class ExpansionBtn: MonoBehaviour
                     case 8: // 책상 서랍1
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_IntheTable);
                         break;
-                    
-                        // 열기 버튼
-                       
+                    case 12: // 책상 윗 부분
+                        cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_OntheTable);
+                        //anim.SetTrigger("IsTableClosed");
+                        break;
+                    case 13: // 책상 확대 후 책상 또 확대
+                        // 책상 확대 애니메이션
+                        break;
+
+
+                    // 열기 버튼
+
                     case 9: // 책상 서랍2 - 서랍 열기 버튼
                             // 애니메이션 실행
                         //anim.SetBool("isTableOpened", true);
@@ -75,7 +83,8 @@ public class ExpansionBtn: MonoBehaviour
                         // 애니메이션 실행
                         break;
                     case 11: // 서랍2 - 서랍 열기 버튼
-                        // 애니메이션 실행
+                             // 애니메이션 실행
+  
                     default:
                         break;
                 }

@@ -22,13 +22,20 @@ public class BuggeymanBtn : MonoBehaviour
     {
         get { return IsExistBuggey; }
     }
+
+    public void BuggeyOffBtn()
+    {
+        buggey.SetActive(false);
+    }
+
+
     public void BuggeyAppearCloset() // 옷장 클로징 + 오픈 후
     {
         BuggeyAppear(50); // 첫 오픈
         // 첫번재 오픈이랑 나머지를 어케 구분해야되지>
         // 120초 지나면 0.3으로 출현
         // 150초 지나면 0.5로 출현
-        // 180초 지나면 1.0
+        // 180초 지나면 1.0z
     }
 
 

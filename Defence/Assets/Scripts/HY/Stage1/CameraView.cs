@@ -32,7 +32,8 @@ public class CameraView : MonoBehaviour
     public enum CameraLocation // 옮겨진 카메라 위치
     {
         BG_Lock = 0, // 처음 화면
-        BG_Lock_OntheTable = 1, // 처음 화면 - 서랍
+        BG_Lock_Table = 14, // 책상 확대
+        BG_Lock_OntheTable = 1, // 처음 화면 - 책상
         BG_Lock_IntheTable = 13,
         BG_Lock_Closet = 2, // 처음 화면 - 옷장
         
@@ -152,20 +153,26 @@ public class CameraView : MonoBehaviour
         {
             NextCameraOn((int)CameraLocation.BG_UndertheBed);
         }
-        else if(currentImgLocation == (int)CameraLocation.BG_Bed_Bed)
+        else if (currentImgLocation == (int)CameraLocation.BG_Bed_Bed)
         // BG_Bed로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Bed);
         }
-        else if(currentImgLocation == ((int)CameraLocation.BG_Lock_IntheTable)||
-            currentImgLocation == ((int)CameraLocation.BG_Lock_OntheTable)||
+        else if (currentImgLocation == ((int)CameraLocation.BG_Lock_Table) ||
             currentImgLocation == ((int)CameraLocation.BG_Lock_Closet))
         // BG_Lock으로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Lock);
-            anim.SetTrigger("IsTableClosed");
+            //anim.SetTrigger("IsTableClosed");
+        }
+
+        else if (currentImgLocation == ((int)CameraLocation.BG_Lock_OntheTable) || (currentImgLocation == ((int)CameraLocation.BG_Lock_IntheTable)))
+        {
+            NextCameraOn((int)CameraLocation.BG_Lock_Table);
+            //anim.SetTrigger("IsTableClosed");
 
         }
+        // 테이블 확대로 돌아가기
         else if (currentImgLocation == ((int)CameraLocation.BG_Lamp_ToyBox) || 
             currentImgLocation == ((int)CameraLocation.BG_Lamp_Lamp) || 
             currentImgLocation == ((int)CameraLocation.BG_Lamp_Drawer) || 
