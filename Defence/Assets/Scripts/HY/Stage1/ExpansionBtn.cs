@@ -92,6 +92,7 @@ public class ExpansionBtn: MonoBehaviour
                 }
 
                 btns[i].SetActive(false);
+                
                 this.GetComponent<RayCast>().getHit = new RaycastHit2D();
                 break;
             }
@@ -103,7 +104,7 @@ public class ExpansionBtn: MonoBehaviour
         cameraview.KeyBtn.SetActive(false); // Key버튼 끄기
         OpenGauge.SetActive(true); // 게이지 이미지 켜주기
         this.GetComponent<Inventory>().ClipNum = -1;
-
+        
     }
 
     public void KeyIconOnClick() // KeyBtn 누르면 나오는 KeyIconBtn

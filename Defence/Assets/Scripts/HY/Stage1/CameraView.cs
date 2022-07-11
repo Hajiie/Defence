@@ -114,6 +114,7 @@ public class CameraView : MonoBehaviour
             NextCameraOn((int)CameraLocation.BG_Lock);
         }
         // 나머지 화면인 경우 Setactive(false)
+        
     }
 
     public void RightArrow() // 오른쪽 이동 버튼 눌렀을 때
@@ -201,7 +202,17 @@ public class CameraView : MonoBehaviour
                 Cameras[i].gameObject.SetActive(false);
             }
         }
-        
+
+        RaycastHit2D hit = this.GetComponent<RayCast>().getHit;
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SelectObject>())
+            {
+                hit.transform.GetComponent<SelectObject>().ObjBtn.SetActive(false);
+                this.GetComponent<RayCast>().getHit = new RaycastHit2D();
+            }
+        }
+
         BuggeyOnOff(nextcamera); // 부기 등장 확률 함수 / 카메라 이동할 때마다 실행
         //ArrowOnOff(); // 이동 버튼
         

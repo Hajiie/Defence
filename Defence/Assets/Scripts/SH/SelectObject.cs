@@ -16,9 +16,10 @@ public class SelectObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (scpMng.GetComponent<RayCast>().getHit != this)
         {
-            ObjBtn.SetActive(false);
+                ObjBtn.SetActive(false);
         }
     }
 }
