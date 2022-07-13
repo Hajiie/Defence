@@ -11,17 +11,8 @@ public class ExpansionBtn: MonoBehaviour
     [SerializeField] List<Image> bars = new List<Image>();
 
     public CameraView cameraview;
-    public GameObject table;
     public GameObject OpenGauge;
     public string sceneName;
-
-    public Animator anim;
-
-
-    private void Start()
-    {
-        anim = table.GetComponent<Animator>();
-    }
 
     public void Expand() // 가구 버튼 누르면 클로징 씬으로 이동 - 해당 버튼이 SetActive(true)인가?
 
@@ -39,18 +30,19 @@ public class ExpansionBtn: MonoBehaviour
                         break;
                     case 1: // 책상
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lock_Table);
-                        //anim.SetTrigger("IsTableClosed");
+                        //tableanim.SetTrigger("IsTableClosed");
                         //??
 
                         break;
                     case 2: // 침대 확대
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Bed_Bed);
+                       
                         break;
                     case 3: // 장난감 박스
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lamp_ToyBox);
                         break;
                     case 4: // 램프
-                        cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lamp_Lamp);
+                        cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Closet2);
                         break;
                     case 5: // 서랍1
                         cameraview.NextCameraOn((int)CameraView.CameraLocation.BG_Lamp_Drawer);

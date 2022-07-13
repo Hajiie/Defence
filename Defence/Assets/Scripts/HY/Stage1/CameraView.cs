@@ -12,8 +12,9 @@ public class CameraView : MonoBehaviour
     Clip clip;
     public BuggeymanBtn buggeymanbtn;
     public ExpansionBtn expansionbtn;
+    public AnimationMNG anim;
 
-    public Animator anim;
+    //public Animator anim;
 
     public Camera getCamera
     {
@@ -36,14 +37,15 @@ public class CameraView : MonoBehaviour
         BG_Lock_OntheTable = 1, // 처음 화면 - 책상
         BG_Lock_IntheTable = 13,
         BG_Lock_Closet = 2, // 처음 화면 - 옷장
-        
+        BG_Closet2 = 7, // 옷장 확대
+
         BG_Bed = 3, // 침실   
         BG_Bed_Bed = 12, // 침대
         BG_UndertheBed = 4, // 침대 아래
 
         BG_Lamp = 5, // 램프 있는 방
         BG_Lamp_ToyBox = 6, // 장난감 상자
-        BG_Lamp_Lamp = 7, // 램프
+ 
         BG_Lamp_Drawer = 8, // 서랍
         BG_Lamp_Window = 9, // 창문
 
@@ -80,8 +82,7 @@ public class CameraView : MonoBehaviour
                 //Debug.Log(currentImgLocation);
                 ArrowOnOff(); // 이동 버튼
             }
-            
-
+           
             if (currentImgLocation == (int)CameraLocation.BG_Door_Door) // BG_Door_Door이면
             {
                 if (time_max > 0)
@@ -158,13 +159,19 @@ public class CameraView : MonoBehaviour
         // BG_Bed로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Bed);
+            anim.bed.SetTrigger("isBedClosed");
         }
         else if (currentImgLocation == ((int)CameraLocation.BG_Lock_Table) ||
             currentImgLocation == ((int)CameraLocation.BG_Lock_Closet))
         // BG_Lock으로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Lock);
-            //anim.SetTrigger("IsTableClosed");
+            anim.closetanim.SetTrigger("isClosetClosed");
+        }
+        else if(currentImgLocation == ((int)CameraLocation.BG_Closet2))
+        {
+            NextCameraOn((int)CameraLocation.BG_Lock_Closet);
+            //anim.closetanim.SetTrigger
         }
 
         else if (currentImgLocation == ((int)CameraLocation.BG_Lock_OntheTable) || (currentImgLocation == ((int)CameraLocation.BG_Lock_IntheTable)))
@@ -175,7 +182,6 @@ public class CameraView : MonoBehaviour
         }
         // 테이블 확대로 돌아가기
         else if (currentImgLocation == ((int)CameraLocation.BG_Lamp_ToyBox) || 
-            currentImgLocation == ((int)CameraLocation.BG_Lamp_Lamp) || 
             currentImgLocation == ((int)CameraLocation.BG_Lamp_Drawer) || 
             currentImgLocation == ((int)CameraLocation.BG_Lamp_Window))
         // BG_Lamp으로 되돌아가기
@@ -282,7 +288,7 @@ public class CameraView : MonoBehaviour
 
             case (int)CameraLocation.BG_UndertheBed: // 침대 밑
                 buggeymanbtn.BuggeyAppearUndertheBed();
-                HideBtn.SetActive(true);
+                HideBtn.SetActive(false);
                 break;
             
             case (int)CameraLocation.BG_Bed_Bed: // 침대 클로징
