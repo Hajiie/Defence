@@ -187,12 +187,15 @@ public class CameraView : MonoBehaviour
         // BG_Lamp으로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Lamp);
+            anim.window.SetBool("isWindowClosed",false);
+            anim.Toybox.SetTrigger("isBoxClosed");
         }
         else if(currentImgLocation == ((int)CameraLocation.BG_Door_Door))
         // BG_Door로 되돌아가기
         {
             NextCameraOn((int)CameraLocation.BG_Door);
             currentImgLocation = 10; // 이미지 번호 직접 넣어줌
+            anim.door.SetTrigger("isDoorClosed");
         }
 
     }

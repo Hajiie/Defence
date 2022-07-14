@@ -25,7 +25,26 @@ public class AnimationMNG : MonoBehaviour
     
     public void ClosetAnim_Open()
     {
+        closetanim.SetTrigger("isClosetClosed");
         closetanim.SetTrigger("isClosetOpened");
     }
 
+    public void WindowAnim()
+    {
+        window.SetBool("isWindowClosed", true);
+    }
+    public void ToyboxAnim()
+    {
+        Toybox.SetTrigger("isBoxClosed");
+    }
+
+    public void DoorAnim()
+    {
+        door.SetTrigger("isDoorClosed");
+    }
+
+    public void DrawerAnim()
+    {
+
+    }
 }
